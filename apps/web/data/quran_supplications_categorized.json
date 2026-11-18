@@ -1,0 +1,1322 @@
+[
+  {
+    "surah": 2,
+    "ayah": 126,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 127,
+    "entity": "Ibrahim and Ismail",
+    "context_type": "supplication",
+    "attribution_basis": "Explicitly named in the verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 128,
+    "entity": "Ibrahim and Ismail",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of 2:127",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 129,
+    "entity": "Ibrahim and Ismail",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of 2:127",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 200,
+    "entity": "People seeking only worldly benefit",
+    "context_type": "worldly_request",
+    "attribution_basis": "Explicitly described as a group of people",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 201,
+    "entity": "People seeking good in this world and the Hereafter",
+    "context_type": "supplication",
+    "attribution_basis": "Explicitly described as another group of people",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 250,
+    "entity": "Talut’s believing soldiers",
+    "context_type": "supplication",
+    "attribution_basis": "Context of confronting Jalut and his army",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 260,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 285,
+    "entity": "The Messenger and the believers",
+    "context_type": "supplication",
+    "attribution_basis": "The verse mentions the Messenger and believers",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 2,
+    "ayah": 286,
+    "entity": "The believers",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of the believers’ words in 2:285",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 8,
+    "entity": "People firmly grounded in knowledge",
+    "context_type": "supplication",
+    "attribution_basis": "Context in 3:7",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 9,
+    "entity": "People firmly grounded in knowledge",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of 3:8",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 16,
+    "entity": "God-fearing believers",
+    "context_type": "supplication",
+    "attribution_basis": "Described in 3:15–17",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 35,
+    "entity": "Wife of Imran (mother of Maryam)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 36,
+    "entity": "Wife of Imran (mother of Maryam)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 38,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 41,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 53,
+    "entity": "Disciples of Isa (the Hawariyyun)",
+    "context_type": "supplication",
+    "attribution_basis": "Context in 3:52",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 147,
+    "entity": "Believers who fought alongside prophets",
+    "context_type": "supplication",
+    "attribution_basis": "Context in 3:146",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 191,
+    "entity": "People of understanding (ulu al-albab)",
+    "context_type": "supplication",
+    "attribution_basis": "Context in 3:190–191",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 192,
+    "entity": "People of understanding (ulu al-albab)",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of 3:191",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 193,
+    "entity": "People of understanding (ulu al-albab)",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of 3:191",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 3,
+    "ayah": 194,
+    "entity": "People of understanding (ulu al-albab)",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of 3:191",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 4,
+    "ayah": 75,
+    "entity": "Oppressed believing men, women and children",
+    "context_type": "supplication",
+    "attribution_basis": "Explicit description in the verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 4,
+    "ayah": 77,
+    "entity": "A group commanded to fight who feared people",
+    "context_type": "complaint",
+    "attribution_basis": "Explicit description in the verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 5,
+    "ayah": 25,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 5,
+    "ayah": 83,
+    "entity": "Truth-recognizing listeners from earlier scripture communities",
+    "context_type": "supplication",
+    "attribution_basis": "Context 5:82–83",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 5,
+    "ayah": 114,
+    "entity": "Isa ibn Maryam",
+    "context_type": "supplication",
+    "attribution_basis": "Explicitly named in the verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 6,
+    "ayah": 128,
+    "entity": "Human allies of the jinn",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Explicit in the verse; Day of Judgment",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 23,
+    "entity": "Adam and his wife Hawwa",
+    "context_type": "supplication",
+    "attribution_basis": "Context 7:19–23",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 38,
+    "entity": "Later generations of the people of Hell",
+    "context_type": "judgment_statement",
+    "attribution_basis": "The later group speaks about their predecessors",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 47,
+    "entity": "People of the Heights (al-Araf)",
+    "context_type": "supplication",
+    "attribution_basis": "Context 7:46–47",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 89,
+    "entity": "Shuayb and the believers with him",
+    "context_type": "supplication",
+    "attribution_basis": "Context 7:88–89",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 126,
+    "entity": "Pharaoh’s magicians who believed",
+    "context_type": "supplication",
+    "attribution_basis": "Context 7:120–126",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 143,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 151,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 155,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 7,
+    "ayah": 156,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 10,
+    "ayah": 85,
+    "entity": "Believing followers of Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Context 10:83–85",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 10,
+    "ayah": 86,
+    "entity": "Believing followers of Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Contextual speaker identification",
+    "invocation_form": "continuation",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 10,
+    "ayah": 88,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Explicitly named in the verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 11,
+    "ayah": 45,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 11,
+    "ayah": 47,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 12,
+    "ayah": 33,
+    "entity": "Yusuf",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 12,
+    "ayah": 101,
+    "entity": "Yusuf",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 35,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 36,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 37,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Context 14:35–41",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 38,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of his prayer",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 40,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of his prayer",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 41,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Continuation of his prayer",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 14,
+    "ayah": 44,
+    "entity": "Wrongdoers requesting respite at Judgment",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Described as wrongdoers",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 16,
+    "ayah": 86,
+    "entity": "Polytheists seeing their alleged partners",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context of the Day of Judgment",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 17,
+    "ayah": 24,
+    "entity": "Believer praying for parents (commanded invocation)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 17,
+    "ayah": 80,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 18,
+    "ayah": 10,
+    "entity": "Companions of the Cave",
+    "context_type": "supplication",
+    "attribution_basis": "Explicit context in verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 19,
+    "ayah": 4,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 19,
+    "ayah": 5,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 19,
+    "ayah": 6,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 19,
+    "ayah": 10,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 25,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 26,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 27,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 28,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 29,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 30,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 31,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 32,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 33,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 34,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 35,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 45,
+    "entity": "Musa and Harun",
+    "context_type": "supplication",
+    "attribution_basis": "Their speech following divine instruction",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 114,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 20,
+    "ayah": 134,
+    "entity": "Hypothetical objectors who would complain before revelation",
+    "context_type": "hypothetical_statement",
+    "attribution_basis": "Conditional argument in the verse, not a reported actual prayer",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 21,
+    "ayah": 83,
+    "entity": "Ayyub",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "other",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 21,
+    "ayah": 87,
+    "entity": "Yunus (Dhu al-Nun)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "other",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 21,
+    "ayah": 89,
+    "entity": "Zakariya",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 26,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 29,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "other",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 39,
+    "entity": "Prophet sent to a denying community (name not stated in immediate passage)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 93,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 94,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 97,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 98,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 106,
+    "entity": "Condemned wrongdoers in Hell",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context 23:103–108",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 107,
+    "entity": "Condemned wrongdoers in Hell",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Continuation of 23:106",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 109,
+    "entity": "Believing servants of Allah",
+    "context_type": "supplication",
+    "attribution_basis": "Allah recounts their earlier prayer",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 23,
+    "ayah": 118,
+    "entity": "Muhammad (commanded to say)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 25,
+    "ayah": 21,
+    "entity": "Those who do not expect to meet Allah",
+    "context_type": "non_invocative_reference",
+    "attribution_basis": "The wording “our Lord” is the object of “see” (or see our Lord), not a prayer.",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 25,
+    "ayah": 65,
+    "entity": "Servants of the Most Merciful (ibad al-Rahman)",
+    "context_type": "supplication",
+    "attribution_basis": "Context 25:63–65",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 25,
+    "ayah": 74,
+    "entity": "Servants of the Most Merciful (ibad al-Rahman)",
+    "context_type": "supplication",
+    "attribution_basis": "Context 25:63–74",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 26,
+    "ayah": 83,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 26,
+    "ayah": 84,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 26,
+    "ayah": 85,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 26,
+    "ayah": 86,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 26,
+    "ayah": 87,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 27,
+    "ayah": 19,
+    "entity": "Sulayman",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 16,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 17,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 21,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 24,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 33,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 34,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 47,
+    "entity": "Hypothetical people protesting lack of a messenger",
+    "context_type": "hypothetical_statement",
+    "attribution_basis": "Conditional hypothetical speech",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 28,
+    "ayah": 63,
+    "entity": "Leaders against whom judgment is confirmed",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context 28:62–63",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 29,
+    "ayah": 30,
+    "entity": "Lut",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 32,
+    "ayah": 12,
+    "entity": "Sinners at the Judgment",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Explicit context in verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 33,
+    "ayah": 67,
+    "entity": "People of Hell who followed leaders",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context 33:64–68",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 33,
+    "ayah": 68,
+    "entity": "People of Hell who followed leaders",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Continuation of 33:67",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 34,
+    "ayah": 19,
+    "entity": "People of Saba",
+    "context_type": "reported_statement",
+    "attribution_basis": "Context 34:15–19; wording/readings have interpretive nuance",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 35,
+    "ayah": 34,
+    "entity": "People of Paradise",
+    "context_type": "non_invocative_reference",
+    "attribution_basis": "“Indeed our Lord is Forgiving, Appreciative” is praise referring to Allah, not the vocative “O our Lord”.",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 35,
+    "ayah": 37,
+    "entity": "People of Hell seeking another chance",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context 35:36–37",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 37,
+    "ayah": 100,
+    "entity": "Ibrahim",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 38,
+    "ayah": 16,
+    "entity": "Mockers who demand their judgment hastened",
+    "context_type": "mocking_demand",
+    "attribution_basis": "Context 38:12–16",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 38,
+    "ayah": 35,
+    "entity": "Sulayman",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 38,
+    "ayah": 41,
+    "entity": "Ayyub",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "other",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 38,
+    "ayah": 61,
+    "entity": "People of Hell blaming those who led them astray",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context 38:59–61",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 40,
+    "ayah": 7,
+    "entity": "Angels bearing and surrounding the Throne",
+    "context_type": "intercession",
+    "attribution_basis": "Explicit context in verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 40,
+    "ayah": 8,
+    "entity": "Angels bearing and surrounding the Throne",
+    "context_type": "intercession",
+    "attribution_basis": "Continuation of 40:7",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 40,
+    "ayah": 11,
+    "entity": "People of Hell admitting their wrongdoing",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Context 40:10–11",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 41,
+    "ayah": 29,
+    "entity": "Disbelievers asking to see their misleaders",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Explicit in verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 44,
+    "ayah": 22,
+    "entity": "Musa",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "other",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 46,
+    "ayah": 15,
+    "entity": "Believer at maturity (model invocation)",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 50,
+    "ayah": 27,
+    "entity": "The disbeliever’s companion (qarin)",
+    "context_type": "judgment_statement",
+    "attribution_basis": "Speaker is the qarin; interpretation of identity discussed in tafsir",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 54,
+    "ayah": 10,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 59,
+    "ayah": 10,
+    "entity": "Later believers praying for earlier believers",
+    "context_type": "supplication",
+    "attribution_basis": "Explicit context in verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 60,
+    "ayah": 5,
+    "entity": "Ibrahim and the believers with him",
+    "context_type": "supplication",
+    "attribution_basis": "Context 60:4–5",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 66,
+    "ayah": 8,
+    "entity": "The Prophet and believers with him",
+    "context_type": "supplication",
+    "attribution_basis": "Explicit context of their light in verse",
+    "invocation_form": "rabbana",
+    "contains_rabbana": true,
+    "category": "rabbana"
+  },
+  {
+    "surah": 66,
+    "ayah": 11,
+    "entity": "Wife of Pharaoh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 71,
+    "ayah": 26,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 71,
+    "ayah": 27,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  },
+  {
+    "surah": 71,
+    "ayah": 28,
+    "entity": "Nuh",
+    "context_type": "supplication",
+    "attribution_basis": "Speaker named in passage or identified by its immediate context; multi-ayah continuations retain the same speaker",
+    "invocation_form": "rabbi",
+    "contains_rabbana": false,
+    "category": "without_rabbana"
+  }
+]

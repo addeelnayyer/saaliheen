@@ -1,0 +1,18 @@
+Fulfils [0053](0053-a-published-tafsir-replaces-saaliheens-own-explanations.md) and [0011](0011-all-data-in-neon-behind-the-versioned-api.md) for the Tafsir.
+
+# The Tafsir is loaded by a script that replaces a Language's rows and asks the deployment to refresh them
+
+The Tafsir lives in Neon (#233), one row per Tafsir entry in `tafsir_entry (language, surah, first_ayah, last_ayah, text)`, keyed by Language, Surah and first Ayah, its text as published with its bold and italic markup. The content migration `0016-create-tafsir-entry` makes the table; an exclusion constraint (`btree_gist`) keeps two entries of one Language from sharing an Ayah, which holds the Urdu rows the owner puts in by hand to the same rule as the loaded English.
+
+**Loading.** `pnpm db:load-tafsir <file> [<origin>]` reads QUL's English file, each Ayah key holding either `{ text, ayah_keys }` or the key of the entry it belongs to, into entries, refusing the whole file, naming the key, when it breaks that shape or names an Ayah the Quran import did not load. It then deletes every English row and inserts the file's, in one transaction, so a rerun of the same file leaves the same rows and an entry the file dropped loses its row. It is not a content migration: those run once, and the Tafsir, which no one edits in Saaliheen, must be reloadable whenever QUL corrects it. Nor is it part of the Quran import: the owner downloads QUL's file by hand, and a Tafsir correction should not re-import the Quran.
+
+**Reads.** A Surah's Tafsir in a Language is read through `src/tafsir/cached.ts`, kept in Next's data cache under the Surah's tag `tafsir:<surah>` and keyed by the deployment, as the Allah references are for pages ([0028](0028-the-allah-references-endpoint-reads-neon-on-each-request-and-says-when-it-cannot.md)). `GET /api/v1/tafsir/{surah}?lang=en|ur` answers `{ surah, language, credit, entries }` through it, cached by the CDN for a minute and served stale for up to five more while it is read again; 404 for no Surah, 400 for a `lang` that is neither, and 503 when Neon cannot be read in time, never an empty list it did not read, for 0028's reason.
+
+**Refreshing.** The loader runs outside the site, where `revalidateTag` cannot reach the deployment's cache. So, given the deployment's origin, it asks `POST /api/v1/tafsir/reloads`, with the deployment's `TAFSIR_RELOAD_SECRET` as a bearer token, to refresh every Surah's tag. Every Surah, not only those the load changed: a refresh that failed is then retried by loading again, and reading 114 Surahs again once a load costs nothing worth saving. The refresh reaches Next's data cache, not the CDN, so a reader may see the old Tafsir for the CDN's few minutes more. It writes nothing, so the worst a leaked secret allows is extra reads of Neon. Unset on the deployment, the route refuses everyone, and a load is seen after the next deploy. The owner's Urdu rows are refreshed the same way, by POSTing `{ surahs }`, the Surahs they changed.
+
+## Considered Options
+
+- Reading Neon on each request, uncached, as 0028's endpoint does: no refresh needed, but every Surah page will read the Tafsir too, and a page cannot be rebuilt on each request.
+- An Admin-only reload route taking QUL's file as its body: the loader would run inside the site and refresh its own cache, but the owner would need an Admin session from a shell, and the file is large for a request.
+- A short time-based revalidation: no secret, but a reload would take as long to appear as the cache keeps an entry, and every entry would be read again on that timer though the Tafsir almost never changes.
+- Loading the Tafsir in a content migration: it would run once per database, and a corrected file would need a new migration each time.

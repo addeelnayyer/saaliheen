@@ -1,0 +1,6 @@
+/* Each Script's text is set in its own typeface and only the active Script's
+   shows (data-script on <html>), so only its typeface downloads. */
+.uthmani { font-family: var(--f-uthmani); }
+.indopak { font-family: var(--f-indopak); }
+:global(html:not([data-script="indopak"])) .indopak,
+:global(html[data-script="indopak"]) .uthmani { display: none; }

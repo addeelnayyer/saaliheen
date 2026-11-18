@@ -1,0 +1,69 @@
+/* The Iltifat pages (#138). The overview: the index's intro panel, a short
+   explanation, the four Iltifat directions as tinted cards like the Themes
+   list's, and the source note at the foot. A direction page: its heading, then
+   one entry per run: a heading linking into the Surah beside the direction
+   badge, the Ayahs (../ayah-list.module.css), and each reason in English. */
+
+.page { display: grid; gap: 28px; min-width: 0; }
+
+/* ---- the overview */
+
+.prose { display: grid; gap: 10px; max-width: 68ch; }
+.prose p, .aside { margin: 0; font-size: 15.5px; line-height: 1.7; }
+.aside a, .sourceNote a { color: var(--accent); }
+
+.directions {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 8px;
+  margin: 0; padding: 0; list-style: none;
+}
+.direction {
+  display: grid; gap: 4px; justify-items: start; height: 100%; min-width: 0; padding: 14px 18px; border-radius: 14px;
+  background: var(--tint); color: var(--ink); text-decoration: none; transition: background .15s;
+}
+.direction:hover { background: var(--hi); }
+.directionName { font-size: 18px; font-weight: 600; color: var(--accent); }
+.description { font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.count { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+
+.sourceNote { border-top: 1px solid var(--line); padding-top: 14px; }
+.sourceNote p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 72ch; }
+
+/* ---- a direction page */
+
+.pageHeader { display: grid; gap: 6px; }
+.back { justify-self: start; font-size: 13.5px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--accent); text-decoration: underline; }
+.facts { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; font-size: 14px; color: var(--muted); }
+
+/* Below the sticky site bar on a wide screen, an entry opened at its fragment stays in sight. */
+.entry { display: grid; gap: 10px; min-width: 0; }
+@media (min-width: 760px) { .entry, .reason { scroll-margin-top: 76px; } }
+
+.entryHeader { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.entryHeading { margin: 0; font-size: 15px; font-weight: 600; }
+.entryHeading a { color: var(--accent); text-decoration: none; letter-spacing: .02em; }
+.entryHeading a:hover { text-decoration: underline; }
+
+.badge {
+  margin: 0; padding: 1px 10px; border-radius: 999px; border: 1px solid var(--accent);
+  color: var(--accent); font-size: 12.5px; font-weight: 500; white-space: nowrap;
+}
+/* Said by a screen reader, never shown. */
+.said { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.reason { display: grid; gap: 4px; justify-items: start; min-width: 0; }
+.reason p { margin: 0; font-size: calc(14.5px * var(--meaning-scale)); line-height: 1.65; overflow-wrap: break-word; }
+.disputed {
+  padding: 0 8px; border-radius: 6px; background: var(--chip); color: var(--muted);
+  font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) { .direction { transition: none; } }
+
+/* The key to an entry's Marked Words (#143): each side's swatch, in the tint
+   its Words are drawn on (globals.css), beside its name. */
+.key { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding: 0; list-style: none; font-size: 13.5px; color: var(--muted); }
+.keySide { display: flex; align-items: center; gap: 8px; }
+.swatch { width: 18px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+.from { background: var(--iltifat-from); }
+.to { background: var(--iltifat-to); }

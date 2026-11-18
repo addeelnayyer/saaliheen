@@ -1,0 +1,6 @@
+# Expo's local state, `expo export` output and native projects `expo run` generates.
+.expo/
+dist/
+ios/
+android/
+expo-env.d.ts

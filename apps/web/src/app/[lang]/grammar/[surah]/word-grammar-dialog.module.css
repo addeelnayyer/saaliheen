@@ -1,0 +1,33 @@
+/* The Word grammar dialog (#277), on the Root dialog's sheet and head
+   (../../[surah]/root-dialog.module.css): its Segments one per row, the
+   Corpus's Uthmani text flush right in the Uthmani typeface whatever the
+   reader's Script, and its terms reading from the left, the first (its Part
+   of speech) drawn in its Part of speech colour. Only an Indo-Pak reader is
+   told the Segments are in Uthmani. */
+.uthmaniNote { display: none; margin: 0; font-size: 13px; color: var(--muted); }
+:root[data-script="indopak"] .uthmaniNote { display: block; }
+
+.segments { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.segment {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "terms ar"; gap: 0 14px; align-items: center;
+  padding: 6px 2px; border-bottom: 1px solid var(--line); min-width: 0;
+}
+.segmentText {
+  grid-area: ar; justify-self: end; font-family: var(--f-uthmani); line-height: 1.9;
+  font-size: calc(26px * var(--arabic-scale)); padding-bottom: 2px; border-bottom: 3px solid var(--part-of-speech);
+}
+.segmentText.empty { font-family: var(--f-ui); font-size: 12.5px; font-style: italic; color: var(--muted); border-bottom-style: dashed; }
+.terms { grid-area: terms; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; min-width: 0; }
+.term {
+  font-family: var(--f-ui); font-size: 12.5px; line-height: 1.7; border: 1px solid var(--line); border-radius: 999px; padding: 0 8px;
+}
+.term:first-child { color: var(--part-of-speech); border-color: var(--part-of-speech); font-weight: 600; }
+.term [lang="ar"] { font-family: var(--f-uthmani); }
+
+.lead { display: flex; align-items: center; gap: 10px; margin: 0; }
+.leadLabel { font-size: 13px; color: var(--muted); }
+.tag {
+  font: inherit; font-family: var(--f-quran); font-size: calc(20px * var(--q-size) * var(--arabic-scale)); line-height: 1.6;
+  color: var(--accent); background: var(--chip); border: 0; border-radius: 999px; padding: 0 14px; cursor: pointer;
+}
+.tag:hover { background: var(--tint); }

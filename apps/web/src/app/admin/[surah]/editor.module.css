@@ -1,0 +1,134 @@
+/* The Passage editor (#44): the look of a Surah page on the site's tokens
+   (globals.css), Passages on faint alternating backgrounds, and the
+   Unpublished changes bar fixed at the foot. */
+
+/* Room under the last Ayah for the bar. */
+.editor { display: grid; gap: 16px; padding-bottom: 160px; }
+
+/* The toolbar (#86): stuck to the top of the window, the two switches then the
+   Expand all / Collapse all icons at the end; on a phone, the switches on one
+   row and the icons at the end of the next. */
+.toolbar {
+  position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 8px 16px; padding: 8px 0;
+  background: var(--paper); border-bottom: 1px solid var(--line);
+}
+.switches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.switch { display: flex; align-items: center; gap: 4px; font-size: 14px; color: var(--muted); }
+.switchName { margin-inline-end: 2px; }
+.icons { display: flex; align-items: center; gap: 6px; margin-inline-start: auto; }
+@media (max-width: 600px) {
+  .toolbar { gap: 6px; }
+  .switches { flex-wrap: nowrap; gap: 8px; }
+  .switchName { display: none; }
+  .switch { font-size: 13px; gap: 3px; }
+  .icons { flex-basis: 100%; justify-content: flex-end; }
+}
+
+.note { color: var(--muted); margin: 1em 0; } /* the browser's, which Preflight zeroes (#298) */
+
+.passages { display: grid; border-radius: 16px; overflow: clip; border: 1px solid var(--line); }
+.passage { display: grid; gap: 8px; padding: 16px; }
+.even { background: var(--surface); }
+.odd { background: var(--tint); }
+
+/* The Passage heading: its titles (a button that opens the title fields) and Ayahs. Its chevron,
+   titles and controls, like every button and field in the editor, are shadcn/ui's (#299). */
+.heading { margin: 0; display: grid; justify-items: center; gap: 2px; text-align: center; font-size: 18px; font-weight: 600; }
+.heading[draggable="true"] { cursor: grab; }
+/* The chevron, then the titles. */
+.headline { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.ur { font-family: var(--f-ur); font-weight: normal; }
+.missing { color: var(--madani); font-style: italic; font-weight: 500; }
+.range { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: .03em; }
+
+.controls { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
+
+/* Title fields: English and Urdu side by side, stacked on a phone. */
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: grid; gap: 4px; align-content: start; font-size: 13px; font-weight: 500; color: var(--muted); }
+.warning { color: var(--madani); font-weight: normal; }
+@media (max-width: 600px) {
+  .fields { grid-template-columns: 1fr; }
+}
+
+/* An Ayah: its number, its Arabic in the chosen Script and one Ayah translation. */
+.ayah { display: grid; gap: 4px; padding: 8px 0; }
+.number { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.arabic { margin: 0; font-size: calc(26px * var(--arabic-scale)); line-height: var(--q-lh); text-align: right; }
+.english, .urdu { margin: 0; color: var(--ink); }
+.urdu { font-family: var(--f-ur); }
+
+/* Flowing (#86): a Passage's Arabic running on, then one translation paragraph with each Ayah's number as a small superscript. */
+.flowing { display: grid; gap: 8px; padding: 8px 0; }
+.flowing .arabic { text-align: justify; text-align-last: right; }
+.ending { white-space: nowrap; }
+.ayahNumber {
+  font-size: .7em; color: var(--muted); font-variant-numeric: tabular-nums;
+  vertical-align: super; line-height: inherit; position: static; /* the browser's sup, which Preflight replaces (#298) */
+}
+
+/* The gap before an Ayah, holding its ✂︎. */
+.gap { display: flex; justify-content: center; }
+/* While its Passage heading is dragged, a Passage's Ayahs shrink to a line each. */
+.dragged .ayah { grid-template-columns: auto 1fr; align-items: baseline; gap: 12px; padding: 2px 0; }
+.dragged .arabic { font-size: 18px; line-height: 1.6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dragged .english, .dragged .urdu { display: none; }
+.drop {
+  text-align: center; font-size: 13px; font-weight: 600; color: var(--accent);
+  padding: 2px 8px; border: 2px dashed var(--accent); border-radius: 10px; background: var(--hi);
+}
+
+/* The Unpublished changes bar. */
+.bar {
+  position: fixed; inset: auto 0 0; z-index: 10; display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 8px 16px; padding: 12px max(16px, calc((100vw - 720px) / 2));
+  background: var(--paper); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px var(--shadow);
+}
+.quiet { opacity: .35; pointer-events: none; }
+.status { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.flag { font-size: 13px; color: var(--madani); }
+/* How many Allah reference changes are waiting (#152), apart from the Passage and Phrase changes. */
+.allahCount { font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.message { flex-basis: 100%; margin: 0; font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+
+/* How the last publish went (#45): a confirmation, or an alert. */
+.feedback { flex-basis: 100%; margin: 0; font-size: 14px; color: var(--ink); overflow-wrap: anywhere; }
+.feedback a { color: var(--accent); }
+.problem { color: var(--madani); font-weight: 500; }
+
+/* Phrases mode (#100): an Ayah's Word cards, right to left and wrapping, like a
+   Surah page's. A Word in a Phrase is drawn on the reader's tint A or B; a Word
+   in no Phrase on the page's paper, with a dashed outline. */
+.words { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 4px; }
+.word {
+  display: grid; justify-items: center; align-content: start; text-align: center;
+  min-width: 64px; max-width: 100%; padding: 5px 9px 7px; border-radius: 14px;
+  border: 1px solid transparent; background: var(--paper);
+}
+.word[data-phrase="a"] { background: var(--phrase-a); }
+.word[data-phrase="b"] { background: var(--phrase-b); }
+.word[data-phrase="none"] { border: 1px dashed var(--muted); }
+.wordArabic { font-size: calc(28px * var(--q-size) * var(--arabic-scale)); line-height: var(--q-lh); white-space: nowrap; }
+.wordMeaning { font-size: calc(13px * var(--meaning-scale)); line-height: 1.4; color: var(--muted); max-width: 100%; overflow-wrap: anywhere; }
+.wordMeaning:lang(ur) { font-size: calc(14px * var(--meaning-scale)); line-height: var(--ur-lh); }
+/* A Passage heading's Phrase progress: muted while Words are unmarked, in the accent once every Word is in a Phrase. */
+.progress { font-size: 13px; font-weight: 500; color: var(--madani); }
+.progress[data-done] { color: var(--accent); }
+
+/* Marking Phrases by tapping (#100): Word cards are buttons; the picked Words are ringed in the accent,
+   and the Phrase controls sit at the top of the Unpublished changes bar. */
+.word[role="button"] { cursor: pointer; touch-action: manipulation; user-select: none; }
+.word[data-picked] { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* Marking Allah references (#152): an Allah reference's Arabic in Allah reference colour, the gold
+   readers see (#147), whether or not the Admin has switched it off for reading. */
+.word[data-allah-reference] .wordArabic { color: var(--allah); }
+.picking { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; font-size: 14px; }
+
+/* Tafsir entries (#235): where each starts, on its first Ayah, in each Language; beside a ✂︎ inside an
+   entry, the entry a new Passage there would split; and in the bar, each Passage splitting one, scrolling
+   once there are many so the bar never covers the page. */
+.tafsirStart { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+.insideTafsir { font-size: 12px; color: var(--madani); }
+.splits { margin: 4px 0 0; padding-inline-start: 20px; max-height: 6.5em; overflow-y: auto; font-weight: 400; list-style: disc; } /* Preflight takes the bullets away (#298) */

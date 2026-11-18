@@ -1,0 +1,24 @@
+/* What a page opened in parts (ADR 0005, 0014) shows while parts are still to
+   come: its skeleton's placeholders, over which a shine sweeps (still with
+   reduced motion), and, once loading has stopped short, a message and Retry.
+   Each page sizes its own placeholders. */
+
+.ghost {
+  border-radius: 14px;
+  background: linear-gradient(100deg, var(--tint) 35%, var(--hi) 50%, var(--tint) 65%) 0 0 / 300% 100%;
+  animation: shine 1.6s ease-in-out infinite;
+}
+@keyframes shine {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.failed {
+  display: grid; justify-items: center; gap: 12px; padding: 32px 16px; text-align: center;
+  font-size: 14px; color: var(--muted);
+}
+.failed p { margin: 0; max-width: 46ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost { animation: none; }
+}

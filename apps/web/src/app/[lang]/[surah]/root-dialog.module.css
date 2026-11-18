@@ -1,0 +1,109 @@
+/* The Root dialog of the Option B mockup (#1 § Design): a centred sheet over a
+   scrim, the shadcn/ui Dialog's card (@/components/ui/dialog, #302), as the
+   Particle dialog and the Word grammar dialog are (#303). The content sits in
+   .body. The dialog scrolls as one, but its head stays pinned at the top
+   while the Lemmas and Spellings scroll beneath it, with a line under it once
+   they have (data-scrolled, root-dialog.tsx). */
+
+.body { --pad: 22px; padding: 0 var(--pad) 24px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+
+/* The label, the Root page link (#289) and the close button on top; below
+   them, as in the Lemma rows, the transliteration on the left and the Root's
+   letters (or the particle) flush right, with Memorized? (#248, #251) just
+   before them. Pinned, on the paper
+   across the dialog's full width, so what scrolls beneath is hidden. */
+.head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 4px 12px; align-items: center;
+  grid-template-areas: "lab link close" "translit memorized letters";
+  position: sticky; top: 0; z-index: 1; background: var(--paper);
+  margin-inline: calc(-1 * var(--pad)); padding: 20px var(--pad) 4px;
+  border-bottom: 1px solid transparent;
+}
+[data-scrolled] > .body > .head { border-bottom-color: var(--line); }
+.headText { display: contents; }
+.memorized { grid-area: memorized; justify-self: end; }
+.lab { grid-area: lab; font-size: 13px; color: var(--muted); }
+.rootPage {
+  grid-area: link; justify-self: end; font-family: var(--f-ui); font-size: 13.5px; white-space: nowrap;
+  color: var(--accent); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+}
+.rootPage:hover { border-color: var(--accent); background: var(--chip); }
+.rootPage:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.letters {
+  grid-area: letters; justify-self: end; align-self: baseline;
+  font-family: var(--f-quran); font-weight: normal; font-size: calc(44px * var(--q-size) * var(--arabic-scale)); line-height: 1.5;
+  margin: 0; color: var(--accent); word-spacing: .2em; direction: rtl;
+}
+.translit { grid-area: translit; justify-self: start; align-self: baseline; margin: 0; font-family: var(--f-ui); font-size: 15px; line-height: 1.5; color: var(--muted); }
+.row { font: inherit; color: inherit; cursor: pointer; }
+/* The close Button's place in the head; its look is its own (root-dialog.tsx). */
+.closeAt { grid-area: close; justify-self: end; }
+.stat { margin: 0; font-size: 14px; background: var(--tint); border-radius: 12px; padding: 4px 12px; }
+.title { font-weight: 600; font-size: 15px; margin: 4px 0 0; }
+
+/* Lemma rows: each a disclosure button over its Spellings. Laid out like a
+   bilingual glossary: the meaning reads from the left, the Arabic sits in a
+   column on the right, and the chevron leads the row. The markup keeps the
+   Arabic first, so it is still read first. */
+.lemmas, .spellings { list-style: none; margin: 0; padding: 0; display: grid; }
+.spellings[hidden] { display: none; }
+/* The Particle dialog's Spellings (#249), listed as a Lemma's are, but open and with no Lemma row above them. */
+.particleSpellings { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.particleSpellings > .spelling { border-bottom: 1px solid var(--line); }
+.particleSpellings > .spelling + .spelling { border-top: 0; }
+.loading { margin: 0; min-height: 120px; }
+.lemma { border-bottom: 1px solid var(--line); min-width: 0; }
+.row {
+  width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "chev mean count ar";
+  gap: 4px 12px; align-items: center; padding: 6px 2px; border: 0; background: none; text-align: start;
+}
+.row::after { grid-area: chev; content: "▾" / ""; font-family: var(--f-ui); font-size: 12px; color: var(--muted); transition: rotate .2s; }
+.row[aria-expanded="true"]::after { rotate: 180deg; }
+.row:hover .lemmaText { color: var(--accent); }
+/* Arabic sits flush right and the meaning, even Urdu's, flush left: physical
+   sides, as the dialog is always English and left to right. */
+.lemmaText, .spText { grid-area: ar; justify-self: end; text-align: right; }
+.lemmaMean, .spMean { grid-area: mean; justify-self: start; text-align: left; }
+.lemmaText { font-family: var(--f-quran); line-height: var(--q-lh); font-size: calc(24px * var(--q-size) * var(--arabic-scale)); }
+.count {
+  grid-area: count; font-family: var(--f-ui); font-variant-numeric: tabular-nums; font-size: 12.5px; color: var(--accent);
+  background: var(--chip); border-radius: 999px; padding: 0 9px; white-space: nowrap; line-height: 1.8; justify-self: end;
+}
+.lemmaMean, .spMean { font-size: calc(14px * var(--meaning-scale)); min-width: 0; overflow-wrap: anywhere; }
+.lemmaMean:lang(ur), .spMean:lang(ur) { font-size: calc(15px * var(--meaning-scale)); }
+
+/* A Lemma's Spellings: meaning left, text right, then its Word locations on their own line. */
+.spellings { padding: 2px 0 10px; padding-inline-start: 14px; border-inline-start: 2px solid var(--chip); margin-bottom: 8px; }
+.spelling {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(90px, auto); gap: 0 14px; align-items: center;
+  grid-template-areas: "mean ar" "refs refs";
+  padding: 4px 2px; min-width: 0;
+}
+.spelling + .spelling { border-top: 1px dashed var(--line); }
+.spText { font-family: var(--f-quran); line-height: var(--q-lh); font-size: calc(22px * var(--q-size) * var(--arabic-scale)); overflow-wrap: anywhere; }
+.refs {
+  grid-area: refs; display: flex; flex-wrap: wrap; gap: 4px 6px; min-width: 0;
+  font-family: var(--f-ui); font-variant-numeric: tabular-nums; font-size: 12.5px; line-height: 1.6;
+}
+.ref { color: var(--accent); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; }
+.ref:hover { border-color: var(--accent); background: var(--chip); }
+
+/* The tapped Word's Lemma row, Spelling and Word location (#322), on the pale
+   tint a Root page marks its Words with (--root-word, #287); the Word
+   location's link keeps its accent border, so it stands out on its tinted Spelling. */
+.row[data-marked], .spelling[data-marked] { background: var(--root-word); border-radius: 8px; }
+.ref[aria-current="true"] { background: var(--root-word); color: var(--ink); border-color: var(--accent); }
+
+@media (max-width: 480px) {
+  .body { --pad: 14px; padding-bottom: 20px; }
+  .head { padding-top: 16px; }
+  /* The meaning with its count below it on the left; the Arabic spans both on the right. */
+  .row { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "chev mean ar" ". count ar"; row-gap: 2px; }
+  .count { justify-self: start; }
+  /* A long Arabic form wraps rather than squeezing its meaning to nothing. */
+  .lemmaText, .spText { max-width: 50vw; }
+  .spellings { padding-inline-start: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .row::after { transition: none; } }

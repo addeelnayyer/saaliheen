@@ -1,0 +1,16 @@
+/* A site document: the top bar's paper strip with only the brand, then one
+   readable column of text. */
+
+.app { max-width: 1120px; margin: 0 auto; padding-block: 0 64px; display: grid; gap: 24px; }
+.bar {
+  display: flex; align-items: center; padding-block: 12px; background: var(--paper);
+  box-shadow: 0 0 0 100vmax var(--paper), 0 1px 0 100vmax var(--line);
+  clip-path: inset(0 -100vmax -1px);
+}
+.doc { max-width: 70ch; display: grid; gap: 12px; overflow-wrap: anywhere; }
+.title { font-weight: 600; font-size: clamp(24px, 3.4vw, 32px); line-height: calc(var(--lh) * .9); margin: 0; color: var(--accent); }
+.updated { margin: 0 0 8px; font-size: 14px; color: var(--muted); }
+.doc h2 { margin: 20px 0 0; font-size: 18px; font-weight: 600; }
+.doc p, .doc ul { margin: 0; }
+.doc ul { padding-inline-start: 22px; display: grid; gap: 6px; list-style: disc; } /* Preflight takes the bullets away (#298) */
+.doc a { color: var(--accent); }

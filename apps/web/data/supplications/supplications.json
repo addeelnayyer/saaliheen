@@ -1,0 +1,1319 @@
+{
+  "speakers": [
+    {
+      "id": "a-believer-come-of-age",
+      "nameEn": "A believer come of age",
+      "nameUr": "پختہ عمر کو پہنچا ہوا مومن",
+      "includesProphet": false
+    },
+    {
+      "id": "a-believer-praying-for-parents",
+      "nameEn": "A believer praying for parents",
+      "nameUr": "والدین کے لیے دعا کرنے والا مومن",
+      "includesProphet": false
+    },
+    {
+      "id": "a-prophet-sent-to-a-denying-people",
+      "nameEn": "A Prophet sent to a denying people",
+      "nameUr": "جھٹلانے والی قوم کی طرف بھیجے گئے نبی",
+      "includesProphet": true
+    },
+    {
+      "id": "adam-and-hawwa",
+      "nameEn": "Adam and Hawwa",
+      "nameUr": "آدم اور حوا",
+      "includesProphet": true
+    },
+    {
+      "id": "allahs-believing-servants",
+      "nameEn": "Allah’s believing servants",
+      "nameUr": "اللہ کے مومن بندے",
+      "includesProphet": false
+    },
+    {
+      "id": "ayyub",
+      "nameEn": "Ayyub",
+      "nameUr": "ایوب",
+      "includesProphet": true
+    },
+    {
+      "id": "believers-who-fought-alongside-prophets",
+      "nameEn": "Believers who fought alongside Prophets",
+      "nameUr": "انبیا کے ساتھ لڑنے والے مومن",
+      "includesProphet": false
+    },
+    {
+      "id": "condemned-wrongdoers-in-hell",
+      "nameEn": "Condemned wrongdoers in Hell",
+      "nameUr": "جہنم میں سزا پانے والے ظالم",
+      "includesProphet": false
+    },
+    {
+      "id": "disbelievers-asking-to-see-those-who-misled-them",
+      "nameEn": "Disbelievers asking to see those who misled them",
+      "nameUr": "اپنے گمراہ کرنے والوں کو دیکھنا چاہنے والے کافر",
+      "includesProphet": false
+    },
+    {
+      "id": "god-fearing-believers",
+      "nameEn": "God-fearing believers",
+      "nameUr": "متقی مومن",
+      "includesProphet": false
+    },
+    {
+      "id": "human-allies-of-the-jinn",
+      "nameEn": "Human allies of the jinn",
+      "nameUr": "جنوں کے انسانی دوست",
+      "includesProphet": false
+    },
+    {
+      "id": "ibrahim",
+      "nameEn": "Ibrahim",
+      "nameUr": "ابراہیم",
+      "includesProphet": true
+    },
+    {
+      "id": "ibrahim-and-ismail",
+      "nameEn": "Ibrahim and Ismail",
+      "nameUr": "ابراہیم اور اسماعیل",
+      "includesProphet": true
+    },
+    {
+      "id": "ibrahim-and-the-believers-with-him",
+      "nameEn": "Ibrahim and the believers with him",
+      "nameUr": "ابراہیم اور ان کے ساتھی مومن",
+      "includesProphet": true
+    },
+    {
+      "id": "isa-son-of-maryam",
+      "nameEn": "Isa son of Maryam",
+      "nameUr": "عیسیٰ ابن مریم",
+      "includesProphet": true
+    },
+    {
+      "id": "later-believers-praying-for-earlier-believers",
+      "nameEn": "Later believers praying for earlier believers",
+      "nameUr": "پہلے مومنوں کے لیے دعا کرنے والے بعد کے مومن",
+      "includesProphet": false
+    },
+    {
+      "id": "later-generations-of-the-people-of-hell",
+      "nameEn": "Later generations of the people of Hell",
+      "nameUr": "جہنم والوں کی بعد کی نسلیں",
+      "includesProphet": false
+    },
+    {
+      "id": "leaders-against-whom-judgment-is-confirmed",
+      "nameEn": "Leaders against whom judgment is confirmed",
+      "nameUr": "وہ سردار جن پر فیصلہ ثابت ہو گیا",
+      "includesProphet": false
+    },
+    {
+      "id": "lut",
+      "nameEn": "Lut",
+      "nameUr": "لوط",
+      "includesProphet": true
+    },
+    {
+      "id": "mockers-who-demand-their-judgment-hastened",
+      "nameEn": "Mockers who demand their judgment hastened",
+      "nameUr": "اپنا فیصلہ جلد مانگنے والے ٹھٹھا کرنے والے",
+      "includesProphet": false
+    },
+    {
+      "id": "musa",
+      "nameEn": "Musa",
+      "nameUr": "موسیٰ",
+      "includesProphet": true
+    },
+    {
+      "id": "musa-and-harun",
+      "nameEn": "Musa and Harun",
+      "nameUr": "موسیٰ اور ہارون",
+      "includesProphet": true
+    },
+    {
+      "id": "nuh",
+      "nameEn": "Nuh",
+      "nameUr": "نوح",
+      "includesProphet": true
+    },
+    {
+      "id": "objectors-who-would-have-complained-had-no-revelation-come",
+      "nameEn": "Objectors who would have complained had no revelation come",
+      "nameUr": "وحی نہ آنے پر شکایت کرنے والے فرضی معترض",
+      "includesProphet": false
+    },
+    {
+      "id": "oppressed-believing-men-women-and-children",
+      "nameEn": "Oppressed believing men, women and children",
+      "nameUr": "کمزور مومن مرد، عورتیں اور بچے",
+      "includesProphet": false
+    },
+    {
+      "id": "people-of-earlier-scripture-who-knew-the-truth",
+      "nameEn": "People of earlier Scripture who knew the truth",
+      "nameUr": "حق پہچاننے والے اہلِ کتاب",
+      "includesProphet": false
+    },
+    {
+      "id": "people-of-hell-admitting-their-wrongdoing",
+      "nameEn": "People of Hell admitting their wrongdoing",
+      "nameUr": "اپنے گناہوں کا اقرار کرنے والے جہنمی",
+      "includesProphet": false
+    },
+    {
+      "id": "people-of-hell-blaming-those-who-led-them-astray",
+      "nameEn": "People of Hell blaming those who led them astray",
+      "nameUr": "گمراہ کرنے والوں کو الزام دینے والے جہنمی",
+      "includesProphet": false
+    },
+    {
+      "id": "people-of-hell-seeking-another-chance",
+      "nameEn": "People of Hell seeking another chance",
+      "nameUr": "دوسرا موقع مانگنے والے جہنمی",
+      "includesProphet": false
+    },
+    {
+      "id": "people-of-hell-who-followed-their-leaders",
+      "nameEn": "People of Hell who followed their leaders",
+      "nameUr": "اپنے سرداروں کی پیروی کرنے والے جہنمی",
+      "includesProphet": false
+    },
+    {
+      "id": "people-of-understanding",
+      "nameEn": "People of understanding",
+      "nameUr": "عقل والے",
+      "includesProphet": false
+    },
+    {
+      "id": "people-seeking-good-in-this-world-and-the-hereafter",
+      "nameEn": "People seeking good in this world and the Hereafter",
+      "nameUr": "دنیا اور آخرت کی بھلائی مانگنے والے",
+      "includesProphet": false
+    },
+    {
+      "id": "people-seeking-only-this-worlds-good",
+      "nameEn": "People seeking only this world’s good",
+      "nameUr": "صرف دنیا مانگنے والے",
+      "includesProphet": false
+    },
+    {
+      "id": "people-who-would-have-protested-that-no-messenger-came",
+      "nameEn": "People who would have protested that no Messenger came",
+      "nameUr": "رسول نہ آنے پر احتجاج کرنے والے فرضی لوگ",
+      "includesProphet": false
+    },
+    {
+      "id": "pharaohs-magicians-who-believed",
+      "nameEn": "Pharaoh’s magicians who believed",
+      "nameUr": "فرعون کے جادوگر جو ایمان لائے",
+      "includesProphet": false
+    },
+    {
+      "id": "polytheists-seeing-the-partners-they-ascribed",
+      "nameEn": "Polytheists seeing the partners they ascribed",
+      "nameUr": "اپنے ٹھہرائے ہوئے شریکوں کو دیکھنے والے مشرک",
+      "includesProphet": false
+    },
+    {
+      "id": "shuayb-and-the-believers-with-him",
+      "nameEn": "Shuayb and the believers with him",
+      "nameUr": "شعیب اور ان کے ساتھی مومن",
+      "includesProphet": true
+    },
+    {
+      "id": "sinners-at-the-judgment",
+      "nameEn": "Sinners at the Judgment",
+      "nameUr": "قیامت کے دن مجرم",
+      "includesProphet": false
+    },
+    {
+      "id": "sulayman",
+      "nameEn": "Sulayman",
+      "nameUr": "سلیمان",
+      "includesProphet": true
+    },
+    {
+      "id": "taluts-believing-soldiers",
+      "nameEn": "Talut’s believing soldiers",
+      "nameUr": "طالوت کے مومن سپاہی",
+      "includesProphet": false
+    },
+    {
+      "id": "the-angels-who-bear-the-throne-and-those-around-it",
+      "nameEn": "The angels who bear the Throne and those around it",
+      "nameUr": "عرش اٹھانے والے اور اس کے گرد کے فرشتے",
+      "includesProphet": false
+    },
+    {
+      "id": "the-believers",
+      "nameEn": "The believers",
+      "nameUr": "مومن",
+      "includesProphet": false
+    },
+    {
+      "id": "the-believing-followers-of-musa",
+      "nameEn": "The believing followers of Musa",
+      "nameUr": "موسیٰ کے مومن پیروکار",
+      "includesProphet": false
+    },
+    {
+      "id": "the-companions-of-the-cave",
+      "nameEn": "The Companions of the Cave",
+      "nameUr": "اصحابِ کہف",
+      "includesProphet": false
+    },
+    {
+      "id": "the-disbelievers-companion",
+      "nameEn": "The disbeliever’s companion",
+      "nameUr": "کافر کا ہم نشین",
+      "includesProphet": false
+    },
+    {
+      "id": "the-disciples-of-isa",
+      "nameEn": "The disciples of Isa",
+      "nameUr": "عیسیٰ کے حواری",
+      "includesProphet": false
+    },
+    {
+      "id": "the-messenger-and-the-believers",
+      "nameEn": "The Messenger and the believers",
+      "nameUr": "رسول اور اہلِ ایمان",
+      "includesProphet": true
+    },
+    {
+      "id": "the-people-of-paradise",
+      "nameEn": "The people of Paradise",
+      "nameUr": "جنت والے",
+      "includesProphet": false
+    },
+    {
+      "id": "the-people-of-saba",
+      "nameEn": "The people of Saba",
+      "nameUr": "قومِ سبا",
+      "includesProphet": false
+    },
+    {
+      "id": "the-people-of-the-heights",
+      "nameEn": "The people of the Heights",
+      "nameUr": "اصحابِ اعراف",
+      "includesProphet": false
+    },
+    {
+      "id": "the-prophet-and-the-believers-with-him",
+      "nameEn": "The Prophet and the believers with him",
+      "nameUr": "نبی اور ان کے ساتھی مومن",
+      "includesProphet": true
+    },
+    {
+      "id": "the-prophet-muhammad-commanded-to-say",
+      "nameEn": "The Prophet Muhammad ﷺ, commanded to say",
+      "nameUr": "نبی محمد ﷺ، جنہیں کہنے کا حکم ہوا",
+      "includesProphet": true
+    },
+    {
+      "id": "the-servants-of-the-most-merciful",
+      "nameEn": "The servants of the Most Merciful",
+      "nameUr": "رحمٰن کے بندے",
+      "includesProphet": false
+    },
+    {
+      "id": "the-wife-of-imran",
+      "nameEn": "The wife of Imran",
+      "nameUr": "عمران کی بیوی",
+      "includesProphet": false
+    },
+    {
+      "id": "the-wife-of-pharaoh",
+      "nameEn": "The wife of Pharaoh",
+      "nameUr": "فرعون کی بیوی",
+      "includesProphet": false
+    },
+    {
+      "id": "those-commanded-to-fight-who-feared-people",
+      "nameEn": "Those commanded to fight who feared people",
+      "nameUr": "قتال کا حکم پا کر لوگوں سے ڈرنے والے",
+      "includesProphet": false
+    },
+    {
+      "id": "those-firmly-grounded-in-knowledge",
+      "nameEn": "Those firmly grounded in knowledge",
+      "nameUr": "علم میں پختہ لوگ",
+      "includesProphet": false
+    },
+    {
+      "id": "those-who-do-not-expect-to-meet-allah",
+      "nameEn": "Those who do not expect to meet Allah",
+      "nameUr": "اللہ سے ملنے کی امید نہ رکھنے والے",
+      "includesProphet": false
+    },
+    {
+      "id": "wrongdoers-asking-for-respite-at-the-judgment",
+      "nameEn": "Wrongdoers asking for respite at the Judgment",
+      "nameUr": "قیامت کو مہلت مانگنے والے ظالم",
+      "includesProphet": false
+    },
+    {
+      "id": "yunus",
+      "nameEn": "Yunus",
+      "nameUr": "یونس",
+      "includesProphet": true
+    },
+    {
+      "id": "yusuf",
+      "nameEn": "Yusuf",
+      "nameUr": "یوسف",
+      "includesProphet": true
+    },
+    {
+      "id": "zakariya",
+      "nameEn": "Zakariya",
+      "nameUr": "زکریا",
+      "includesProphet": true
+    }
+  ],
+  "supplications": [
+    {
+      "surah": 2,
+      "ayahFrom": 126,
+      "ayahTo": 126,
+      "speakerId": "ibrahim",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 127,
+      "ayahTo": 129,
+      "speakerId": "ibrahim-and-ismail",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 200,
+      "ayahTo": 200,
+      "speakerId": "people-seeking-only-this-worlds-good",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "request-for-this-world-only"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 201,
+      "ayahTo": 201,
+      "speakerId": "people-seeking-good-in-this-world-and-the-hereafter",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 250,
+      "ayahTo": 250,
+      "speakerId": "taluts-believing-soldiers",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 260,
+      "ayahTo": 260,
+      "speakerId": "ibrahim",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 285,
+      "ayahTo": 285,
+      "speakerId": "the-messenger-and-the-believers",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 2,
+      "ayahFrom": 286,
+      "ayahTo": 286,
+      "speakerId": "the-believers",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 8,
+      "ayahTo": 9,
+      "speakerId": "those-firmly-grounded-in-knowledge",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 16,
+      "ayahTo": 16,
+      "speakerId": "god-fearing-believers",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 35,
+      "ayahTo": 36,
+      "speakerId": "the-wife-of-imran",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 38,
+      "ayahTo": 38,
+      "speakerId": "zakariya",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 41,
+      "ayahTo": 41,
+      "speakerId": "zakariya",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 53,
+      "ayahTo": 53,
+      "speakerId": "the-disciples-of-isa",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 147,
+      "ayahTo": 147,
+      "speakerId": "believers-who-fought-alongside-prophets",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 3,
+      "ayahFrom": 191,
+      "ayahTo": 194,
+      "speakerId": "people-of-understanding",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 4,
+      "ayahFrom": 75,
+      "ayahTo": 75,
+      "speakerId": "oppressed-believing-men-women-and-children",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 4,
+      "ayahFrom": 77,
+      "ayahTo": 77,
+      "speakerId": "those-commanded-to-fight-who-feared-people",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "complaint"
+    },
+    {
+      "surah": 5,
+      "ayahFrom": 25,
+      "ayahTo": 25,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 5,
+      "ayahFrom": 83,
+      "ayahTo": 83,
+      "speakerId": "people-of-earlier-scripture-who-knew-the-truth",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 5,
+      "ayahFrom": 114,
+      "ayahTo": 114,
+      "speakerId": "isa-son-of-maryam",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 6,
+      "ayahFrom": 128,
+      "ayahTo": 128,
+      "speakerId": "human-allies-of-the-jinn",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 23,
+      "ayahTo": 23,
+      "speakerId": "adam-and-hawwa",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 38,
+      "ayahTo": 38,
+      "speakerId": "later-generations-of-the-people-of-hell",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 47,
+      "ayahTo": 47,
+      "speakerId": "the-people-of-the-heights",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 89,
+      "ayahTo": 89,
+      "speakerId": "shuayb-and-the-believers-with-him",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 126,
+      "ayahTo": 126,
+      "speakerId": "pharaohs-magicians-who-believed",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 143,
+      "ayahTo": 143,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 151,
+      "ayahTo": 151,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 7,
+      "ayahFrom": 155,
+      "ayahTo": 156,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 10,
+      "ayahFrom": 85,
+      "ayahTo": 86,
+      "speakerId": "the-believing-followers-of-musa",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 10,
+      "ayahFrom": 88,
+      "ayahTo": 88,
+      "speakerId": "musa",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 11,
+      "ayahFrom": 45,
+      "ayahTo": 45,
+      "speakerId": "nuh",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 11,
+      "ayahFrom": 47,
+      "ayahTo": 47,
+      "speakerId": "nuh",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 12,
+      "ayahFrom": 33,
+      "ayahTo": 33,
+      "speakerId": "yusuf",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 12,
+      "ayahFrom": 101,
+      "ayahTo": 101,
+      "speakerId": "yusuf",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 14,
+      "ayahFrom": 35,
+      "ayahTo": 41,
+      "speakerId": "ibrahim",
+      "openings": [
+        "rabbana",
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 14,
+      "ayahFrom": 44,
+      "ayahTo": 44,
+      "speakerId": "wrongdoers-asking-for-respite-at-the-judgment",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 16,
+      "ayahFrom": 86,
+      "ayahTo": 86,
+      "speakerId": "polytheists-seeing-the-partners-they-ascribed",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 17,
+      "ayahFrom": 24,
+      "ayahTo": 24,
+      "speakerId": "a-believer-praying-for-parents",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 17,
+      "ayahFrom": 80,
+      "ayahTo": 80,
+      "speakerId": "the-prophet-muhammad-commanded-to-say",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 18,
+      "ayahFrom": 10,
+      "ayahTo": 10,
+      "speakerId": "the-companions-of-the-cave",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 19,
+      "ayahFrom": 4,
+      "ayahTo": 6,
+      "speakerId": "zakariya",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 19,
+      "ayahFrom": 10,
+      "ayahTo": 10,
+      "speakerId": "zakariya",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 20,
+      "ayahFrom": 25,
+      "ayahTo": 35,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 20,
+      "ayahFrom": 45,
+      "ayahTo": 45,
+      "speakerId": "musa-and-harun",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 20,
+      "ayahFrom": 114,
+      "ayahTo": 114,
+      "speakerId": "the-prophet-muhammad-commanded-to-say",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 20,
+      "ayahFrom": 134,
+      "ayahTo": 134,
+      "speakerId": "objectors-who-would-have-complained-had-no-revelation-come",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "hypothetical"
+    },
+    {
+      "surah": 21,
+      "ayahFrom": 83,
+      "ayahTo": 83,
+      "speakerId": "ayyub",
+      "openings": [
+        "other"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 21,
+      "ayahFrom": 87,
+      "ayahTo": 87,
+      "speakerId": "yunus",
+      "openings": [
+        "other"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 21,
+      "ayahFrom": 89,
+      "ayahTo": 89,
+      "speakerId": "zakariya",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 26,
+      "ayahTo": 26,
+      "speakerId": "nuh",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 29,
+      "ayahTo": 29,
+      "speakerId": "nuh",
+      "openings": [
+        "other"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 39,
+      "ayahTo": 39,
+      "speakerId": "a-prophet-sent-to-a-denying-people",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 93,
+      "ayahTo": 94,
+      "speakerId": "the-prophet-muhammad-commanded-to-say",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 97,
+      "ayahTo": 98,
+      "speakerId": "the-prophet-muhammad-commanded-to-say",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 106,
+      "ayahTo": 107,
+      "speakerId": "condemned-wrongdoers-in-hell",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 109,
+      "ayahTo": 109,
+      "speakerId": "allahs-believing-servants",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 23,
+      "ayahFrom": 118,
+      "ayahTo": 118,
+      "speakerId": "the-prophet-muhammad-commanded-to-say",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 25,
+      "ayahFrom": 21,
+      "ayahTo": 21,
+      "speakerId": "those-who-do-not-expect-to-meet-allah",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "reported-words"
+    },
+    {
+      "surah": 25,
+      "ayahFrom": 65,
+      "ayahTo": 65,
+      "speakerId": "the-servants-of-the-most-merciful",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 25,
+      "ayahFrom": 74,
+      "ayahTo": 74,
+      "speakerId": "the-servants-of-the-most-merciful",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 26,
+      "ayahFrom": 83,
+      "ayahTo": 87,
+      "speakerId": "ibrahim",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 27,
+      "ayahFrom": 19,
+      "ayahTo": 19,
+      "speakerId": "sulayman",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 16,
+      "ayahTo": 16,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 17,
+      "ayahTo": 17,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 21,
+      "ayahTo": 21,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 24,
+      "ayahTo": 24,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 33,
+      "ayahTo": 34,
+      "speakerId": "musa",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 47,
+      "ayahTo": 47,
+      "speakerId": "people-who-would-have-protested-that-no-messenger-came",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "hypothetical"
+    },
+    {
+      "surah": 28,
+      "ayahFrom": 63,
+      "ayahTo": 63,
+      "speakerId": "leaders-against-whom-judgment-is-confirmed",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 29,
+      "ayahFrom": 30,
+      "ayahTo": 30,
+      "speakerId": "lut",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 32,
+      "ayahFrom": 12,
+      "ayahTo": 12,
+      "speakerId": "sinners-at-the-judgment",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 33,
+      "ayahFrom": 67,
+      "ayahTo": 68,
+      "speakerId": "people-of-hell-who-followed-their-leaders",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 34,
+      "ayahFrom": 19,
+      "ayahTo": 19,
+      "speakerId": "the-people-of-saba",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "reported-words"
+    },
+    {
+      "surah": 35,
+      "ayahFrom": 34,
+      "ayahTo": 34,
+      "speakerId": "the-people-of-paradise",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "reported-words"
+    },
+    {
+      "surah": 35,
+      "ayahFrom": 37,
+      "ayahTo": 37,
+      "speakerId": "people-of-hell-seeking-another-chance",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 37,
+      "ayahFrom": 100,
+      "ayahTo": 100,
+      "speakerId": "ibrahim",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 38,
+      "ayahFrom": 16,
+      "ayahTo": 16,
+      "speakerId": "mockers-who-demand-their-judgment-hastened",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "mockery"
+    },
+    {
+      "surah": 38,
+      "ayahFrom": 35,
+      "ayahTo": 35,
+      "speakerId": "sulayman",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 38,
+      "ayahFrom": 41,
+      "ayahTo": 41,
+      "speakerId": "ayyub",
+      "openings": [
+        "other"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 38,
+      "ayahFrom": 61,
+      "ayahTo": 61,
+      "speakerId": "people-of-hell-blaming-those-who-led-them-astray",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 40,
+      "ayahFrom": 7,
+      "ayahTo": 8,
+      "speakerId": "the-angels-who-bear-the-throne-and-those-around-it",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 40,
+      "ayahFrom": 11,
+      "ayahTo": 11,
+      "speakerId": "people-of-hell-admitting-their-wrongdoing",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 41,
+      "ayahFrom": 29,
+      "ayahTo": 29,
+      "speakerId": "disbelievers-asking-to-see-those-who-misled-them",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 44,
+      "ayahFrom": 22,
+      "ayahTo": 22,
+      "speakerId": "musa",
+      "openings": [
+        "other"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 46,
+      "ayahFrom": 15,
+      "ayahTo": 15,
+      "speakerId": "a-believer-come-of-age",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 50,
+      "ayahFrom": 27,
+      "ayahTo": 27,
+      "speakerId": "the-disbelievers-companion",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "plea-at-the-judgment"
+    },
+    {
+      "surah": 54,
+      "ayahFrom": 10,
+      "ayahTo": 10,
+      "speakerId": "nuh",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 59,
+      "ayahFrom": 10,
+      "ayahTo": 10,
+      "speakerId": "later-believers-praying-for-earlier-believers",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 60,
+      "ayahFrom": 5,
+      "ayahTo": 5,
+      "speakerId": "ibrahim-and-the-believers-with-him",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 66,
+      "ayahFrom": 8,
+      "ayahTo": 8,
+      "speakerId": "the-prophet-and-the-believers-with-him",
+      "openings": [
+        "rabbana"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 66,
+      "ayahFrom": 11,
+      "ayahTo": 11,
+      "speakerId": "the-wife-of-pharaoh",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    },
+    {
+      "surah": 71,
+      "ayahFrom": 26,
+      "ayahTo": 28,
+      "speakerId": "nuh",
+      "openings": [
+        "rabbi"
+      ],
+      "kind": "supplication"
+    }
+  ]
+}

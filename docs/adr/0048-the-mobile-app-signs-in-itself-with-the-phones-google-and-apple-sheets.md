@@ -1,0 +1,23 @@
+Supersedes the sign-in part of [0029](0029-app-entries-without-a-screen-open-the-website-in-the-readers-language.md).
+
+# The mobile app signs in itself with the phone's Google and Apple sheets
+
+[0029](0029-app-entries-without-a-screen-open-the-website-in-the-readers-language.md) had Me's Sign in open the website's Sign-in page, which signed the browser in and not the app. #75 signs the app in to the reader's Account, with Google or Apple, as the App Store expects an app that offers Accounts to let them be deleted from inside it.
+
+Me's Sign in now offers Sign in with Google, then Sign in with Apple, inside the app. Each opens the phone's own sheet (`@react-native-google-signin/google-signin`, `expo-apple-authentication`), which gives the app the provider's id token; the app sends it to Better Auth's native sign-in, `POST /api/v1/auth/sign-in/social { provider, idToken }`, and keeps the bearer token the answer's `set-auth-token` header carries, with the Account's email and the method, in the phone's keychain (`expo-secure-store`), never in its plain storage. It sends `Authorization: Bearer` on every request after, and names its own scheme, `saaliheen://`, in an `expo-origin` header, as Expo's Better Auth client does. The website trusts `saaliheen://` beside its own origin, reads that header through Better Auth's `expo()` plugin, and accepts id tokens issued to the app as well as to the website: Apple's for the bundle identifier `com.saaliheen.app` beside the website's Services ID, Google's for the app's own clients (`GOOGLE_NATIVE_CLIENT_IDS`) beside the website's. Expo Go's `exp://` is not trusted. The app does not use Better Auth's Expo client: its Account is one plain module, `apps/mobile/src/account.ts`, that the app's scenarios run in Node.
+
+Signed in, Me shows the Account's email with Sign out and Delete Account. Sign out ends the Sign-in on the API when there is a connection and forgets it on the phone either way. Delete Account asks to confirm in the website's words, then deletes the Account at once, as on the website (#68); a Sign-in more than a day old is refused (`SESSION_EXPIRED`), so the app opens the same method's sheet again and deletes with the fresh Sign-in, and cancelling it keeps the Account. Either way the phone keeps its own Reading places and settings. A Sign-in the API no longer knows, as after deleting the Account on the website, signs the app out when it next opens.
+
+The Script, the Language and the Reading places sync through the same storage the app always kept them in, under the website's keys. A change made signed in is marked unsent on the phone (`qwt-account-unsent`) and sent at once. A sync, at sign-in, at each launch and whenever the connection comes back (`expo-network`), applies the Account's Script and Language unless the phone's are unsent, gives the Account the phone's where it has none, then sends the phone's whole list of Reading places and keeps the Account's merge of it. Since each Reading place carries when it was read and the merge keeps the newest per Surah, then the ten newest, Reading places read offline land in the order they were read, whenever they reach the Account. Arabic size, Meaning size and the other settings stay on the phone.
+
+## Consequences
+
+- Google sign-in in a build needs `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` (the website's Google client) and `EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID` where the app is built (`apps/mobile/app.config.ts`); the website needs the iOS and Android client ids in `GOOGLE_NATIVE_CLIENT_IDS`. Apple sign-in needs the Sign in with Apple capability on the app id.
+- The app's scenarios meet an HTTP stand-in for the Account resources (`apps/mobile/features/accounts-api.ts`); the website's own contract for them is `apps/web/features/api/accounts-in-the-app.feature`. Which origins are trusted cannot be shown by an API scenario, since Better Auth checks none while `NODE_ENV` is test, so it is a line of the auth options.
+- Me's other website entries, Credits, Privacy and Terms, still open the website as 0029 says.
+
+## Considered Options
+
+- Signing in through the website in an in-app browser and taking the session back by a deep link (Better Auth's Expo client): it shows a web page where the phone has native sheets, and the App Store prefers Sign in with Apple's own sheet.
+- Keeping the bearer token in AsyncStorage: it is plain storage, readable in a device backup.
+- Sending each offline change in order as a queue of its own: the merge by when each Reading place was read already puts them in order, so sending the whole list is simpler and cannot lose one.

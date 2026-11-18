@@ -1,0 +1,31 @@
+/* The Settings drawer's parts, inside the Sheet (components/ui/sheet.tsx)
+   that draws it on the paper over a scrim, a side panel on the right at wider
+   screens and a bottom sheet on a phone. Its header and the preview stay put;
+   the controls under them scroll. */
+
+/* The Surah bar's Reading settings button: a sliders icon, and its name beside it where there is room. */
+.open { display: inline-flex; align-items: center; gap: 6px; border: 0; font: inherit; font-size: 13px; color: ButtonText; cursor: pointer; } /* a button's text colour, which Preflight makes inherit (#298) */
+.gear { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+@media (max-width: 520px) {
+  .open { padding-inline: 9px; }
+  .openText { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* Ayah 1:2, pinned under the header: Word cards as the page draws them, then its Ayah translation. */
+.preview {
+  flex: none; display: grid; gap: 8px; margin: 0 12px; padding: 10px 8px 12px;
+  border-radius: 16px; background: var(--tint); max-height: 55%; overflow: auto;
+}
+.preview .translation { padding-inline: 4px; }
+
+.controls {
+  flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain;
+  display: grid; align-content: start; gap: 14px; padding: 16px 20px 24px;
+}
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+/* A phone: a bottom sheet, up to most of the screen. */
+@media (max-width: 600px) {
+  .preview { margin-inline: 10px; max-height: 45dvh; }
+  .controls { padding: 14px 16px 20px; }
+}

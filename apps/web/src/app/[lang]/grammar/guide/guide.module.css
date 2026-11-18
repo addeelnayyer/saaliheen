@@ -1,0 +1,25 @@
+/* The Grammar guide (#280): a part per heading, each its labels in rows, the
+   label beside what it means, stacked on a phone. A label is drawn in its
+   Part of speech colour (data-part-of-speech, N, V or P) on the paper, as a
+   Grammar line is; in the three colours' own part its Arabic term is
+   underlined in it too, as a Word on a Grammar page is. */
+.page { display: grid; gap: 20px; padding: 20px 16px 0; min-width: 0; }
+.intro { margin: 0; max-width: 70ch; line-height: 1.6; }
+.intro [lang="ar"], .label [lang="ar"] { font-family: var(--f-uthmani); }
+.section { display: grid; gap: 10px; min-width: 0; }
+.heading { margin: 12px 0 0; font-size: 20px; font-weight: 600; color: var(--ink); }
+.entries { margin: 0; display: grid; min-width: 0; }
+.entry {
+  display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); gap: 4px 20px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.entry:last-child { border-bottom: 0; }
+.label { font-weight: 600; color: var(--part-of-speech, var(--ink)); overflow-wrap: anywhere; }
+.label [lang="ar"] { font-weight: normal; font-size: 1.15em; }
+.entries[data-section="colours"] .label [lang="ar"] { padding-bottom: 2px; border-bottom: 3px solid var(--part-of-speech); }
+.meaning { margin: 0; line-height: 1.6; overflow-wrap: break-word; }
+.say { font-style: italic; color: var(--muted); }
+
+@media (max-width: 520px) {
+  .entry { grid-template-columns: minmax(0, 1fr); }
+}

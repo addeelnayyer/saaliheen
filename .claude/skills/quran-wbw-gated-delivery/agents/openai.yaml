@@ -1,0 +1,5 @@
+interface:
+  display_name: "Quran WBW Gated Delivery"
+  short_description: "Ship one ready-for-agent Saaliheen issue (website, API or mobile) through a gated subagent relay to an open PR"
+policy:
+  allow_implicit_invocation: false

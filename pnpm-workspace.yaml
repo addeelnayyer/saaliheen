@@ -1,0 +1,14 @@
+# The website (apps/web) is one app of the monorepo; the mobile app and the
+# shared packages (#60) join it under apps/ and packages/.
+packages:
+  - apps/*
+  - packages/*
+
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+
+# Next 16.3.6 expires cache tags on the clock that stamps them (ADR 0042).
+# A Next upgrade re-checks this patch, then drops it or re-makes it.
+patchedDependencies:
+  next@16.3.6: patches/next@16.3.6.patch

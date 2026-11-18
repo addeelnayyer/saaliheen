@@ -1,0 +1,59 @@
+/* The Iltifat editor (#142): its list and an Iltifat's editor, on the admin
+   area's tokens (globals.css, admin.module.css). */
+
+/* The list: each Iltifat direction a heading over its Iltifat. */
+.group { margin: 0 0 24px; }
+.groupHeading { font-size: 18px; font-weight: 600; margin: 0 0 8px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.listed {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
+  padding: 8px 12px; border-radius: 10px; text-decoration: none;
+}
+.listed:hover { background: var(--tint); }
+/* "Not yet marked" (#143): while it is on, the list leaves out the marked Iltifat. */
+.filter { margin: 0 0 16px; }
+.notYetMarked .isMarked { display: none; }
+
+/* The run's Word cards, Ayah by Ayah, as the Passage editor draws them. */
+.run { display: grid; gap: 4px; margin: 0 0 24px; }
+.ayah { display: grid; gap: 4px; padding: 8px 0; }
+.number { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.words { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 4px; }
+.word {
+  display: grid; justify-items: center; align-content: start; text-align: center;
+  min-width: 64px; max-width: 100%; box-sizing: border-box; padding: 5px 9px 7px;
+  border-radius: 14px; background: var(--tint);
+  /* A button (#143): a tap marks or unmarks its Word. */
+  border: 0; margin: 0; font: inherit; color: inherit; cursor: pointer;
+}
+.word:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* A Marked Word's card, on its side's tint (globals.css), as the Iltifat pages draw it. */
+.from { background: var(--iltifat-from); }
+.to { background: var(--iltifat-to); }
+/* Said by a screen reader, never shown. */
+.said { composes: said from "../../[lang]/iltifat/iltifat.module.css"; }
+
+/* The side a tap marks (#143): "From" and "To", each beside a swatch of its tint. */
+.sides { display: grid; gap: 6px; margin: 0 0 8px; min-width: 0; }
+.swatch { width: 18px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+.person { color: var(--muted); }
+.wordArabic { font-size: calc(28px * var(--q-size) * var(--arabic-scale)); line-height: var(--q-lh); max-width: 100%; overflow-wrap: anywhere; }
+.wordMeaning { font-size: calc(13px * var(--meaning-scale)); line-height: 1.4; color: var(--muted); max-width: 100%; overflow-wrap: anywhere; }
+
+/* The fields. */
+.form { display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.label { font-size: 14px; font-weight: 500; color: var(--muted); }
+.runFields {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+  margin: 0; padding: 0; border: 0; min-width: 0;
+}
+.runFields legend { padding: 0; margin-bottom: 6px; grid-column: 1 / -1; }
+.check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.status { margin: 0; min-height: 1.5em; color: var(--accent); font-weight: 500; }
+
+/* Previous and Next. */
+.neighbours {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line);
+}

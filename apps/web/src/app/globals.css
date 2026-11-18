@@ -1,0 +1,183 @@
+/* Tailwind v4 and shadcn/ui (#298, docs/adr/0067-website-controls-are-shadcn-ui-on-tailwind-beside-css-modules.md).
+   Tailwind's theme, its base reset (Preflight) and its utilities sit in its
+   cascade layers; everything else in this file, and every CSS Module, is
+   unlayered, so it wins over Tailwind wherever both set a property. */
+@import "tailwindcss";
+
+/* Design tokens: a clean, quranwbw.com-like page. White paper, no borders on
+   cards; surfaces are marked by a soft tint instead, and one sage accent. The
+   reader settings on <html> (src/app/[lang]/settings.ts) switch them:
+   data-script the Quran typeface, data-theme light or dark over the system
+   setting, data-phrase-colours the Phrase colours (--phrase-a and --phrase-b,
+   pale enough that the ink and the muted Word meaning keep 4.5:1 on them),
+   data-arabic-size and data-meaning-size the scales that Quranic Word
+   text and the Word meanings and Ayah translations multiply their sizes by.
+   --allah is Allah reference colour (#147), the gold an Allah reference's
+   Arabic letters are drawn in, one shade for light and one for dark;
+   data-allah-reference-colour="off" switches it off (#148). --iltifat-from
+   and --iltifat-to are the two tints an Iltifat's Marked Words are drawn on
+   (#143), its "from" Words and its "to" Words, on an Iltifat page and in the
+   Iltifat editor: a sage and a sand, deeper than the Phrase colours so that a
+   few Words stand out from an Ayah, and pale enough (dark enough, in dark) that
+   the ink keeps well over 4.5:1 on them. --supplication-span is the opaque
+   tint a Supplication span is drawn on (#270) on the Supplications page: a
+   pale blue, apart from the Iltifat sage and sand and the Allah gold, the ink
+   keeping over 4.5:1 on it in light (14.0:1) and dark (12.5:1). --root-word is
+   the pale tint a Root page draws the Words of each Spelling on (#287): a
+   lilac, apart from the Iltifat sage and sand, the Supplication blue and the
+   Known word green, the ink keeping well over 4.5:1 on it.
+   --grammar-ism, --grammar-fil and --grammar-harf are the Part of speech
+   colours (#275), a blue, a brick and a violet that a Grammar page draws a
+   Word's Grammar line and its underline in, each at 4.5:1 or more on the
+   paper; the Arabic letters stay the ink. */
+:root {
+  --f-uthmani: var(--font-qpc-hafs), serif;
+  --f-indopak: var(--font-digital-khatt-indopak), serif;
+  --f-ur: var(--font-urdu), "Noto Naskh Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
+  --f-ui: var(--font-plex), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --f-quran: var(--f-uthmani); --q-lh: 1.75; --q-size: 1;
+  --lh: 1.55;
+  --arabic-scale: 1; --meaning-scale: 1;
+  /* Urdu's line height: Dubai's Naskh line box (1.69 em) with a little room (#341). */
+  --ur-lh: 1.75;
+
+  --paper: #FFFFFF; --surface: #FFFFFF; --tint: #F5F7F4; --ink: #1C211E; --muted: #6A726D;
+  --line: #ECEFEA; --accent: #2F6A55; --on-accent: #FFFFFF; --hi: #E3EFE8; --chip: #EDF3EF;
+  --accent-on-chip: #2B5B4A; /* the accent deepened to read at 4.5:1 on the chip (#192) */
+  --madani: #8A5A1C; --madani-bg: #F7EFE2;
+  --phrase-a: #F0F7F2; --phrase-b: #FBF5EA;
+  --allah: #A87A0A;
+  --known-word: #E5FCE9;
+  --iltifat-from: #D9EDE1; --iltifat-to: #F5E4C3;
+  --supplication-span: #E6EEF8;
+  --root-word: #EFE9F7;
+  --grammar-ism: #2F5FA8; --grammar-fil: #B0412E; --grammar-harf: #7B4BA6;
+  --shadow: rgba(28, 40, 34, .08); --scrim: rgba(14, 20, 17, .45);
+  color-scheme: light;
+}
+:root[data-script="indopak"] { --f-quran: var(--f-indopak); --q-lh: 2.05; --q-size: 1.06; }
+:root[data-arabic-size="85"] { --arabic-scale: .85; }
+:root[data-arabic-size="115"] { --arabic-scale: 1.15; }
+:root[data-arabic-size="130"] { --arabic-scale: 1.3; }
+:root[data-arabic-size="150"] { --arabic-scale: 1.5; }
+:root[data-meaning-size="85"] { --meaning-scale: .85; }
+:root[data-meaning-size="115"] { --meaning-scale: 1.15; }
+:root[data-meaning-size="130"] { --meaning-scale: 1.3; }
+:root[data-meaning-size="150"] { --meaning-scale: 1.5; }
+/* The interface is English; Urdu Word meanings, Ayah translations and Root
+   dialog meanings carry lang="ur" and set themselves in the Urdu typeface. */
+[lang="ur"] { font-family: var(--f-ur); line-height: var(--ur-lh); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111412; --surface: #111412; --tint: #1A1E1C; --ink: #E6EAE7; --muted: #9AA39E;
+    --line: #232926; --accent: #85C5A8; --on-accent: #111412; --hi: #1E2F27; --chip: #1C2622; --accent-on-chip: #85C5A8;
+    --madani: #DFB878; --madani-bg: #2A2318;
+    --phrase-a: #17271F; --phrase-b: #2B2419;
+    --allah: #E3B84F;
+    --known-word: #163A22;
+    --iltifat-from: #21402F; --iltifat-to: #45351A;
+    --supplication-span: #1B2638;
+    --root-word: #2C2540;
+    --grammar-ism: #8FB4F0; --grammar-fil: #F09A86; --grammar-harf: #C9A3EE;
+    --shadow: rgba(0, 0, 0, .35); --scrim: rgba(0, 0, 0, .62);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111412; --surface: #111412; --tint: #1A1E1C; --ink: #E6EAE7; --muted: #9AA39E;
+  --line: #232926; --accent: #85C5A8; --on-accent: #111412; --hi: #1E2F27; --chip: #1C2622; --accent-on-chip: #85C5A8;
+  --madani: #DFB878; --madani-bg: #2A2318;
+  --phrase-a: #17271F; --phrase-b: #2B2419;
+  --allah: #E3B84F;
+  --known-word: #163A22;
+  --iltifat-from: #21402F; --iltifat-to: #45351A;
+  --supplication-span: #1B2638;
+  --root-word: #2C2540;
+  --grammar-ism: #8FB4F0; --grammar-fil: #F09A86; --grammar-harf: #C9A3EE;
+  --shadow: rgba(0, 0, 0, .35); --scrim: rgba(0, 0, 0, .62);
+  color-scheme: dark;
+}
+
+/* An element's Part of speech (data-part-of-speech, N, V or P) sets
+   --part-of-speech to its colour, for a Grammar page's Words, the Word grammar
+   dialog's Segments and the Grammar guide's labels to draw in. */
+[data-part-of-speech="N"] { --part-of-speech: var(--grammar-ism); }
+[data-part-of-speech="V"] { --part-of-speech: var(--grammar-fil); }
+[data-part-of-speech="P"] { --part-of-speech: var(--grammar-harf); }
+
+/* shadcn/ui's theme, in the tokens above: no colour of its own, so a token
+   changed changes every control, and the reader's light or dark choice and the
+   system setting switch it with them. shadcn's names that the site already
+   uses for something else (--accent, --muted) are mapped straight onto
+   Tailwind's colours rather than declared. */
+@theme inline {
+  --font-sans: var(--f-ui);
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--on-accent);
+  --color-secondary: var(--tint);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--tint);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--chip);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--madani);
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--accent);
+  /* The site's control corners: rounded-md is its buttons' and fields' 10px. */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  /* The Sheet's slide in (#305): from the right on a wider screen, from the foot on a phone. */
+  --animate-sheet-in: sheet-in .22s ease-out;
+  --animate-sheet-up: sheet-up .22s ease-out;
+  @keyframes sheet-in { from { translate: 100% 0; } }
+  @keyframes sheet-up { from { translate: 0 100%; } }
+}
+/* A dialog pops in (src/components/ui/dialog.tsx, #302). */
+@theme {
+  --animate-dialog-pop: dialog-pop .22s ease-out;
+  @keyframes dialog-pop { from { opacity: 0; scale: .96; } }
+}
+/* Tailwind's dark: is the site's dark: the reader's Dark choice, or the system
+   setting where the reader chose neither (the token blocks above). */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) { @slot; }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) { @slot; }
+  }
+}
+
+html { scroll-padding-top: 16px; }
+/* Static text is unselectable, so taps and long-presses feel like an app; only
+   what a person types can be selected (docs/adr/0004-static-text-is-unselectable.md). */
+html {
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+input, textarea { -webkit-user-select: text; user-select: text; }
+@media (min-width: 760px) { html { scroll-padding-top: 88px; } }
+body {
+  margin: 0; padding: 0 16px;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-ui); font-size: 15px; line-height: var(--lh);
+  -webkit-font-smoothing: antialiased;
+}
+/* Preflight sets border-box sizing and a link's inherited colour, and takes a
+   link's underline away; the site's own links (an a with an href) get it back,
+   in Tailwind's base layer so a utility can still take it off, and shadcn/ui's
+   parts, which carry data-slot, do not (#298). */
+@layer base { a[href]:not([data-slot]) { text-decoration: underline; } }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+/* A shadcn/ui part keeps its own corners when focused: a radio item stays round (#300). */
+[data-slot]:focus-visible { border-radius: revert-layer; }
+::selection { background: var(--hi); }

@@ -1,0 +1,21 @@
+{
+  "name": "@saaliheen/passages",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Passage rules: every Ayah in exactly one Passage, no Passage crossing a Surah, and an Admin's edits to Passages.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "eslint": "^9",
+    "typescript": "^5",
+    "typescript-eslint": "^8"
+  }
+}

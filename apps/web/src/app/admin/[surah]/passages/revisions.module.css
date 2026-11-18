@@ -1,0 +1,13 @@
+/* A Surah's Passage revisions (#174): one card per revision, newest first. */
+.revisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.revision { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.version { font-weight: 600; }
+.base { color: var(--muted); font-size: 14px; }
+.by { overflow-wrap: anywhere; min-width: 0; }
+.time { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; margin-inline-end: auto; }
+.part { display: grid; grid-template-columns: 8ch 1fr; gap: 8px; align-items: baseline; }
+.partHeading { font-size: 14px; font-weight: 500; color: var(--muted); margin: 0; }
+.lines { margin: 0; padding-inline-start: 18px; list-style: disc; /* Preflight takes the bullets away (#298) */ display: grid; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.none { color: var(--muted); margin: 0; font-size: 14px; }
+.done { background: var(--tint); padding: 10px 12px; border-radius: 10px; margin: 0 0 16px; }

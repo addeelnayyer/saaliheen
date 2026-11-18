@@ -1,0 +1,14 @@
+/* A Theme page (#129): its name, Theme category and count of Ayahs, then its
+   Passage groups, each a heading linking to the Passage and its Ayahs
+   (../../ayah-list.module.css). */
+
+.page { display: grid; gap: 28px; min-width: 0; }
+.header { display: grid; gap: 6px; }
+.facts { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; margin: 0; font-size: 14px; color: var(--muted); }
+
+.group { display: grid; gap: 10px; min-width: 0; }
+.groupHeading { margin: 0; font-size: 15px; font-weight: 600; }
+.groupHeading a { display: inline-flex; flex-wrap: wrap; gap: 2px 12px; align-items: baseline; color: var(--accent); text-decoration: none; }
+.groupHeading a:hover .groupPlace { text-decoration: underline; }
+.passageTitle { font-size: calc(18px * var(--meaning-scale)); color: var(--ink); }
+.groupPlace { font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: .02em; }

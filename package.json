@@ -1,0 +1,19 @@
+{
+  "name": "saaliheen",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @saaliheen/web dev",
+    "build": "pnpm --filter @saaliheen/web build",
+    "start": "pnpm --filter @saaliheen/web start",
+    "lint": "pnpm --recursive lint",
+    "typecheck": "pnpm --recursive typecheck",
+    "test": "pnpm --recursive test",
+    "test:e2e": "pnpm --filter @saaliheen/web test:e2e",
+    "test:api": "pnpm --filter @saaliheen/web test:api",
+    "test:neon-rows": "pnpm --filter @saaliheen/web test:neon-rows",
+    "test:no-database": "pnpm --filter @saaliheen/web test:no-database",
+    "test:dev": "pnpm --filter @saaliheen/web test:dev",
+    "test:mobile-served": "pnpm --filter @saaliheen/mobile test:served"
+  },
+  "packageManager": "pnpm@11.9.0"
+}

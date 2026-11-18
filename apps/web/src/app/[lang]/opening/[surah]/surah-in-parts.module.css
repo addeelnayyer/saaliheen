@@ -1,0 +1,24 @@
+/* The skeleton of a Surah opened in parts (#24): placeholders sized as the
+   Bismillah, the Ayah number's pill and the Word cards will be, so nothing
+   jumps when the real Ayahs replace them. Their shine is the shared one
+   (../../in-parts/in-parts.module.css). */
+
+.row { pointer-events: none; }
+.line {
+  justify-self: center; width: min(420px, 80%); margin: 20px 0 8px;
+  height: calc(32px * var(--q-size) * var(--arabic-scale) * var(--q-lh));
+}
+.head { justify-self: start; width: 64px; height: calc(12.5px * var(--lh) * 1.1); border-radius: 999px; }
+/* A Word card: its location, Arabic, meaning and Root tag. */
+.tile {
+  max-width: 100%;
+  height: calc(32px * var(--q-size) * var(--arabic-scale) * var(--q-lh) + 20px * var(--meaning-scale) + 64px);
+}
+
+/* Flowing (#125): each Ayah's place is lines of running text instead of its
+   number's pill and Word cards, the rows running on with no rule between them. */
+.lines { display: none; }
+.text { height: calc(26px * var(--q-size) * var(--arabic-scale)); border-radius: 10px; }
+:global(html[data-ayah-layout="flowing"]) .row { gap: 0; padding-block: 0 18px; border-bottom: 0; }
+:global(html[data-ayah-layout="flowing"]) .row > :is(.head, .cards) { display: none; }
+:global(html[data-ayah-layout="flowing"]) .lines { display: grid; gap: 18px; justify-items: start; }

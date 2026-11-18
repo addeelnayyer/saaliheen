@@ -1,0 +1,26 @@
+Amended by [0050](0050-the-import-loads-the-roots-and-juz-lists-and-the-generated-dataset-is-gone.md): the import loads the Roots and Juz lists too, `word.root_letters` is dropped for a `root` table, and nothing writes a generated file.
+Fulfils [0011](0011-all-data-in-neon-behind-the-versioned-api.md) for the Quran text, Word meanings, Ayah translations, Word counts and Recitation timings.
+Amends [0015](0015-content-tables-and-recorded-content-migrations.md): `db:migrate` runs the import before the content migrations.
+
+# `db:migrate` imports the Quran from the committed sources before the content migrations
+
+The Quran text in both Scripts, the Word meanings, the Ayah translations, the Surah metadata, the Word counts and the Recitation timings move from the generated files into Neon (#172). Their sources stay where they are, committed under `apps/web/data/` and never edited; what changes is where the dataset builder's output lands. The builder made files; the import makes rows.
+
+**Entry point.** `DATABASE_URL=… pnpm db:import [<sources dir>]` (`scripts/db-import.ts`) reads the sources from a directory laid out like `apps/web/data`, the committed one when none is given, and makes every check the builder makes. `pnpm db:migrate` runs it first, before the content migrations, which read the Surahs it loads. The deploy runs `pnpm db:migrate` on production before it deploys, and `pnpm dev` runs it on its own Postgres when it starts ([0041](0041-the-theme-load-carries-its-input-pages-are-warmed-by-a-script-and-pnpm-dev-runs-its-own-postgres.md)), so neither has a step of its own.
+
+**Tables.** The import makes and fills:
+
+- `surah (number, name_arabic, name_latin, revelation_place, ayah_count, bismillah)`;
+- `ayah (surah, number, indopak_end, translation_ur, translation_en)`;
+- `word (location, surah, ayah, position, uthmani, indopak, meaning_ur, meaning_en, root_id, root_letters)`, keyed by `location`; an Ayah's Word count is the number of its Word rows, and Ayah-end markers are not Words;
+- `section_mark (surah, ayah, kind, label)`, `kind` one of `hizb-quarter` and `ruku`;
+- `recitation (surah, reciter, audio, hash)`, `recitation_ayah (surah, ayah, from_ms, to_ms)` and `recitation_timing (surah, ayah, position, word, start_ms, end_ms)`, a timing's `word` naming the Word it times, so a repeated Word is a row of its own, and `hash` the SHA-256 of the Recitation file /data/v1 serves, which the manifest names it by;
+- `dataset_import (sources_hash, imported_at)`, one row per load; the latest row's hash is the stored sources hash.
+
+**Sources hash.** The import hashes the sources it reads, and the builder's own code and the Passage rules it checks with, since a change to it may change what it makes of them. When the hash equals the stored one, it writes nothing: no row, no new `dataset_import` row. A complete copy of the sources elsewhere is the same sources.
+
+**One transaction.** A changed hash replaces every row of these tables, adds a `dataset_import` row and, once the Passage load has run, writes each Surah's content hash again ([0020](0020-pages-read-neon-on-request-warmed-after-each-deploy-and-publish.md)), in one transaction. A source that fails a check (a source missing, malformed or empty, the two Scripts' Word locations differing, an Ayah's end wrong, Recitation timings that do not fit the text, an Ayah translation source broken) stops the import before it writes: it exits non-zero, naming what is wrong, and the database keeps the rows and the hash of its last good import, so a deploy never serves a partial Quran. The gaps the builder reports, Words with no meaning in a Language and Words the Recitation does not time, are reported and imported as the builder writes them.
+
+**Reads.** Every page, `/data/v1` file and Surah part reads these rows through Next's data cache (`src/quran/cached.ts`), keyed by the deployment and carrying no tag: only an import changes them, and an import runs only in a deployment's `db:migrate`, before that deployment serves. The warm-up then makes every Surah page and part ([0041](0041-the-theme-load-carries-its-input-pages-are-warmed-by-a-script-and-pnpm-dev-runs-its-own-postgres.md)). The Admin area, and the saves and Publishes it makes, read past that cache (`…Now` in `src/dataset/reader.ts`), so an Admin sees and is checked against the rows as they are. An Iltifat direction page caches the few Ayahs each entry shows with its Iltifat, under its direction's tag, rather than every cited Surah whole. The manifest names each Surah and Recitation file by its stored hash, never hashing those files on request; the Surah index, Roots and Juz lists are hashed once into its cache entry. The generated Surah, Recitation, Surah index and Word count files are no longer written; the Roots and Juz lists stay generated until #173.
+
+**Tests.** The dataset scenarios for this data become import scenarios (`features/import/`, `pnpm test:import`) against a Postgres of their own per run (container `saaliheen-import-db-<PORT>`, port 54000 + PORT % 1000), each scenario on its own database cloned from one import of the committed sources. Each keeps its refusal cases, and each refusal checks that nothing was written.

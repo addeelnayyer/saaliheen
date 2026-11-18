@@ -1,0 +1,191 @@
+# Deploys `main` to Vercel production once typecheck, lint and unit tests pass,
+# and gives every pull request a preview deployment, linked from a PR comment.
+# The build happens here (`vercel build`), and only the prebuilt output is
+# uploaded, so Vercel's own Git integration is switched off in vercel.json.
+#
+# The repo is a pnpm monorepo (#63) and the website is its app apps/web: the
+# Vercel CLI runs there, so the project's Root Directory stays unset and
+# `vercel build` builds the website with the whole workspace installed from the
+# root.
+#
+# `vercel deploy --prebuilt` runs from the root, though, with the output moved
+# there: Next traces the functions' files from the root, so each function's
+# filePathMap names them relative to it (node_modules/.pnpm/... lives only in
+# the root's node_modules), and the CLI resolves those paths against the
+# directory it deploys from.
+#
+# Needs three repository secrets:
+#   VERCEL_TOKEN       a Vercel access token
+#   VERCEL_ORG_ID      "orgId" from apps/web/.vercel/project.json after `vercel link` there
+#   VERCEL_PROJECT_ID  "projectId" from the same file
+# and, optionally, VERCEL_AUTOMATION_BYPASS_SECRET, Vercel's Protection Bypass
+# for Automation secret, which lets the warm-up into a protected preview.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Production deploys queue behind each other; a new push to a PR cancels that
+# PR's older preview run.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('preview-{0}', github.event.pull_request.number) || 'deploy-production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  # 22.18+ is needed: `pnpm db:migrate` runs apps/web/scripts/db-migrate.ts, and through it the
+  # TypeScript sources of packages/dataset and packages/passages, with Node's type stripping.
+  NODE_VERSION: 24
+  VERCEL_CLI: vercel@62.0.0
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # The whole history, not the default shallow clone: the features read
+      # data files as committed before Themes, Passages and Phrases moved into
+      # Neon (#170, #171) from git, at pinned commits a shallow clone lacks.
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+
+  deploy:
+    needs: check
+    # workflow_dispatch can run from any branch; only main goes to production.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: npm install --global "$VERCEL_CLI"
+      - run: vercel pull --yes --environment=production
+        working-directory: apps/web
+      - run: vercel build --prod
+        working-directory: apps/web
+      # The Account tables must match the code before it serves: Better Auth
+      # refuses every request while a table it expects is missing. Migrating
+      # only adds tables and columns, so the deployment still serving works on.
+      # Then the Quran import loads the Quran text, Word meanings, Word counts
+      # and Recitation timings from the committed sources, writing nothing when
+      # they are unchanged and nothing at all when one fails a check (ADR 0049),
+      # and each content migration not yet recorded runs once (ADR 0015): the
+      # pages read the tables and rows they make. Last, with the deployment's
+      # OPENAI_API_KEY, Quran Chat's index embeds the sources that changed (ADR 0056).
+      - name: pnpm db:migrate
+        working-directory: apps/web
+        run: |
+          DATABASE_URL=$(grep '^DATABASE_URL=' .vercel/.env.production.local | cut -d= -f2- | tr -d '"')
+          echo "::add-mask::$DATABASE_URL"
+          OPENAI_API_KEY=$(grep '^OPENAI_API_KEY=' .vercel/.env.production.local | cut -d= -f2- | tr -d '"')
+          if [ -n "$OPENAI_API_KEY" ]; then echo "::add-mask::$OPENAI_API_KEY"; fi
+          DATABASE_URL="$DATABASE_URL" OPENAI_API_KEY="$OPENAI_API_KEY" pnpm db:migrate
+      - name: vercel deploy
+        id: deploy
+        run: |
+          mkdir -p .vercel && mv apps/web/.vercel/output .vercel/output
+          # One archive, not one upload per file: the free plan allows 5000 file uploads a day.
+          url=$(vercel deploy --prebuilt --prod --archive=tgz)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed to $url" >> "$GITHUB_STEP_SUMMARY"
+      # Pages that read Themes render on their first request and are cached
+      # (ADR 0040): request every Theme page and Surah page once, so no reader
+      # meets a cold one (ADR 0041).
+      - name: pnpm warm-up
+        env:
+          URL: ${{ steps.deploy.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          DATABASE_URL=$(grep '^DATABASE_URL=' apps/web/.vercel/.env.production.local | cut -d= -f2- | tr -d '"')
+          echo "::add-mask::$DATABASE_URL"
+          DATABASE_URL="$DATABASE_URL" pnpm --dir apps/web warm-up "$URL"
+
+  preview:
+    needs: check
+    # Pull requests from forks get no secrets, so they can't deploy.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    environment:
+      name: preview
+      url: ${{ steps.deploy.outputs.url }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: npm install --global "$VERCEL_CLI"
+      - run: vercel pull --yes --environment=preview
+        working-directory: apps/web
+      - run: vercel build
+        working-directory: apps/web
+      - name: vercel deploy
+        id: deploy
+        run: |
+          mkdir -p .vercel && mv apps/web/.vercel/output .vercel/output
+          url=$(vercel deploy --prebuilt --archive=tgz)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Preview at $url" >> "$GITHUB_STEP_SUMMARY"
+      # As production's: warm every Theme page and Surah page (ADR 0041). A
+      # protected preview lets the warm-up in with the bypass secret, when set.
+      # Previews share production's database and never migrate it (ADR 0041):
+      # a PR's new content migrations reach it only on merge, so until then
+      # the warm-up names them, warms nothing and lets the preview stand.
+      - name: pnpm warm-up
+        env:
+          URL: ${{ steps.deploy.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          DATABASE_URL=$(grep '^DATABASE_URL=' apps/web/.vercel/.env.preview.local | cut -d= -f2- | tr -d '"')
+          echo "::add-mask::$DATABASE_URL"
+          DATABASE_URL="$DATABASE_URL" pnpm --dir apps/web warm-up "$URL" --skip-when-unmigrated
+      - name: Comment the preview link on the PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          URL: ${{ steps.deploy.outputs.url }}
+        run: |
+          # One comment per PR, edited on every push rather than piling up.
+          marker='<!-- vercel-preview -->'
+          body=$(printf '%s\n**Preview:** %s\n\nBuilt from %s.' "$marker" "$URL" "$SHA")
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+            --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -n 1)
+          if [ -n "$id" ]; then
+            gh api --method PATCH "repos/$REPO/issues/comments/$id" -f body="$body" > /dev/null
+          else
+            gh api "repos/$REPO/issues/$PR/comments" -f body="$body" > /dev/null
+          fi

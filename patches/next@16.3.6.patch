@@ -1,0 +1,28 @@
+diff --git a/dist/esm/server/lib/incremental-cache/tags-manifest.external.js b/dist/esm/server/lib/incremental-cache/tags-manifest.external.js
+index c7988e275ce6d36e05cf00a94a229b0d056ae929..714fbc1868c46240914c38f274ee12e47cfd4db1 100644
+--- a/dist/esm/server/lib/incremental-cache/tags-manifest.external.js
++++ b/dist/esm/server/lib/incremental-cache/tags-manifest.external.js
+@@ -6,7 +6,8 @@ export const areTagsExpired = (tags, timestamp)=>{
+         const entry = tagsManifest.get(tag);
+         const expiredAt = entry == null ? void 0 : entry.expired;
+         if (typeof expiredAt === 'number') {
+-            const now = performance.timeOrigin + performance.now();
++            // Patched (saaliheen, ADR 0042): the clock revalidateTag stamps `expired` with, and entries their `lastModified`.
++            const now = Date.now();
+             // For immediate expiration (expiredAt <= now) and tag was invalidated after entry was created
+             // OR for future expiration that has now passed (expiredAt > timestamp && expiredAt <= now)
+             const isImmediatelyExpired = expiredAt <= now && expiredAt > timestamp;
+diff --git a/dist/server/lib/incremental-cache/tags-manifest.external.js b/dist/server/lib/incremental-cache/tags-manifest.external.js
+index 580e770aeaf477bed332fcf34c02a409f6f99e7e..488add942637cfccc606db6d3b9f2fd963812fe0 100644
+--- a/dist/server/lib/incremental-cache/tags-manifest.external.js
++++ b/dist/server/lib/incremental-cache/tags-manifest.external.js
+@@ -30,7 +30,8 @@ const areTagsExpired = (tags, timestamp)=>{
+         const entry = tagsManifest.get(tag);
+         const expiredAt = entry == null ? void 0 : entry.expired;
+         if (typeof expiredAt === 'number') {
+-            const now = performance.timeOrigin + performance.now();
++            // Patched (saaliheen, ADR 0042): the clock revalidateTag stamps `expired` with, and entries their `lastModified`.
++            const now = Date.now();
+             // For immediate expiration (expiredAt <= now) and tag was invalidated after entry was created
+             // OR for future expiration that has now passed (expiredAt > timestamp && expiredAt <= now)
+             const isImmediatelyExpired = expiredAt <= now && expiredAt > timestamp;

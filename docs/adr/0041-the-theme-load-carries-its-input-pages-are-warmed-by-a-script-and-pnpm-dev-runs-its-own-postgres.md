@@ -1,0 +1,25 @@
+Amends [0012](0012-themes-imported-once-from-quran-says.md), [0020](0020-pages-read-neon-on-request-warmed-after-each-deploy-and-publish.md) and [0037](0037-themes-are-three-content-tables-loaded-once.md).
+
+# The Theme load carries its own input, a script warms every page after each deploy, and `pnpm dev` runs its own Postgres
+
+#170 deletes the Themes file (`apps/web/data/themes.json`) and its generated output (`apps/web/data/generated/themes.json`), so that Neon is the only copy of the Themes ([0020](0020-pages-read-neon-on-request-warmed-after-each-deploy-and-publish.md)). The content migration `0008-load-themes-file` must still load them into every new database: the tests' Postgres on each run, `pnpm dev`'s, and any Neon branch made empty. So the migration carries its input: `apps/web/scripts/content/0008-load-themes-file.json`, byte for byte the Themes file as last committed (5127e94), read only by `loadThemes` (`apps/web/scripts/content/themes.ts`). It is part of a migration, and like one ([0015](0015-content-tables-and-recorded-content-migrations.md)) it is never edited, renamed or removed once shipped. Nothing else reads it: not the dataset build, not a page, not a Route Handler. A change to a Theme is a change in Neon from then on.
+
+The dataset build reads no Themes. `packages/dataset/src/themes.ts` and the one-off import `apps/web/scripts/import-themes.ts` (and its `import-themes` script) are deleted; git keeps them as the record 0012 wanted. The dataset holds no Themes or Theme categories, and each Ayah of a generated Surah file keeps its `themes` key as an empty list, so that `/data/v1/surahs/<n>.json`, which puts Neon's Themes in that place ([0040](0040-pages-that-read-themes-render-on-request-and-are-the-error-page-for-a-second.md)), serves the same bytes, and the manifest the same hashes, as before the move ([0025](0025-offline-surahs-are-kept-as-files-and-refreshed-by-manifest-hash.md)).
+
+After each deploy, production's and each preview's, `.github/workflows/deploy.yml` runs a warm-up, `pnpm --dir apps/web warm-up <deployment URL>` (`apps/web/scripts/warm-up.ts`), with the deployment's `DATABASE_URL`. It requests every Theme page, by the slugs the `theme` table holds, and every Surah page, 1 to 114, each in Urdu and English, so each is rendered once into the cache before a reader asks (0020, 0040). It fails the deploy step, naming each page, when one does not answer 200 or answers the error page (which says 200, 0040, but carries a robots `noindex` no Theme or Surah page has), and sends `x-vercel-protection-bypass` when `VERCEL_AUTOMATION_BYPASS_SECRET` is set, so a protected preview can be warmed.
+
+`pnpm dev` starts its own Postgres before Next: a `postgres:17` container named `saaliheen-dev-db`, published on `127.0.0.1:55432`, its data in the Docker volume `saaliheen-dev-db`, reached at `postgres://saaliheen:saaliheen-dev@127.0.0.1:55432/saaliheen_dev`, and runs `pnpm db:migrate` on it before `next dev` starts, so Theme pages serve with no other setup and an edit made in it outlives a restart. `DEV_DATABASE_NAME` and `DEV_DATABASE_PORT` rename the container and volume and move the port, so its own tests never touch a developer's database. A `DATABASE_URL`, in the environment or in `apps/web/.env.local`, overrides it: `pnpm dev` then starts no Postgres and migrates nothing, and serves the database it names as it is.
+
+## Consequences
+
+- The tests compare what Neon holds with the Themes file as committed at 5127e94 (`git show`, `apps/web/features/site/committed-output.ts`); the dataset features, which `pnpm test` runs in CI's shallow checkout, read the migration's input instead.
+- The warm-up asks for whole pages only. A Theme or Surah opening, its parts, the Themes list, Explore and the `/data/v1` files are rendered on their first request.
+- With `DATABASE_URL` naming a Neon branch, `pnpm dev` never migrates it: previews share production's database (#170 intake), and a migration run from a laptop would change it.
+- The warm-up first asks the database for content migrations it has not had and, naming them, warms nothing: production's deploy fails, having just migrated; a preview's passes `--skip-when-unmigrated` and succeeds, since it shares production's database and a PR's new migrations reach it only on merge (#171).
+
+## Considered Options
+
+- Reading the Themes file at 5127e94 from git at `db:migrate`: no copy in the tree, but the deploy job's checkout is shallow, and `pnpm db:migrate` would need git and the whole history wherever it runs.
+- Keeping `data/themes.json` as the migration's input, as the Iltifat catalogue is kept: #170 asks for the Themes file to go, and in `data/` beside the sources it reads as one more source to edit.
+- Warming from the Themes list's links instead of the `theme` table: no database for the warm-up, but a Theme missing from the list would be left cold without anyone knowing.
+- `pnpm dev` migrating a `DATABASE_URL` too: one path for both, but a developer's `.env.local` names production's database.

@@ -1,0 +1,65 @@
+/* The Surah bar: the top bar with a slim row under it, sticky at every width
+   and full bleed on the paper like the top bar. Its mini form slides it up
+   until only the slim row shows, like a browser's toolbar: the bar keeps its
+   height, so nothing under it moves. data-form is set by surah-bar.tsx; before
+   it is, a deep-linked page (one with a :target Word) is already mini. */
+
+.bar {
+  --row: 44px;
+  position: sticky; top: 0; z-index: 10; display: grid;
+  background: var(--paper);
+  /* Paint the paper and the hairline edge to edge beyond the centred column. */
+  box-shadow: 0 0 0 100vmax var(--paper), 0 1px 0 100vmax var(--line);
+  clip-path: inset(0 -100vmax -1px);
+  transition: transform .2s ease-out;
+}
+/* The top bar sticks as part of the Surah bar, not on its own. */
+.bar > header { position: static; }
+.bar[data-form="mini"],
+:global(html:has(:target)) .bar:not([data-form]) { transform: translateY(calc(var(--row) - 100%)); }
+
+/* The page's scroll padding clears the mini bar (its slim row and a gap), so
+   a deep-linked Word lands below it and the browser's scroll anchoring holds
+   on what the reader sees below the bar, not on what slides under it.
+   Focusing one of the bar's own controls must not scroll the page for it:
+   surah-bar.tsx puts the page back. */
+:global(html):has(.bar) { scroll-padding-top: calc(44px + 16px); } /* --row, and a gap */
+
+/* With the Passage headings switch on (#43) the slim row is taller, for the
+   current Passage's title on a second line under the Surah's names. */
+.titled { --row: 60px; }
+:global(html):has(.titled) { scroll-padding-top: calc(60px + 16px); } /* --row, and a gap */
+
+/* The full form's row of the Surah's own switches, the Ayah layout switch
+   (#125): drawn under the top bar and over the slim row, so the mini form,
+   which shows only the bar's last row, hides it with the top bar. */
+.tools { order: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding-top: 8px; }
+
+/* The slim row: the Reading settings button, the Surah's number and names, the play button. */
+.row { order: 2; height: var(--row); display: flex; align-items: center; justify-content: space-between; gap: 10px; min-width: 0; }
+.names {
+  flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 8px;
+  white-space: nowrap; overflow: hidden;
+}
+/* The Surah's number and names are the button opening the quick picker (#193). */
+button.names { font: inherit; color: inherit; border: 0; background: none; padding: 4px 8px; cursor: pointer; }
+button.names:hover { background: var(--tint); }
+.sNo { font-family: var(--f-ui); font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 600; color: var(--accent); }
+.ar { font-family: var(--f-quran); font-size: calc(20px * var(--q-size)); line-height: 1; color: var(--accent); }
+.latin { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 13px; color: var(--muted); }
+/* The Surah's names over the current Passage's title, cut short with "…" when long. */
+.namesAndTitle { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.namesAndTitle > .names { flex: none; width: 100%; }
+.passage {
+  display: block; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  font-family: var(--f-ui); font-size: 12px; line-height: 1.4; font-weight: 500; color: var(--accent);
+}
+.passage:lang(ur) { font-family: var(--f-ur); font-weight: normal; line-height: var(--ur-lh); }
+.pager { display: inline-flex; gap: 6px; flex: none; }
+.btn {
+  display: inline-flex; gap: 4px; background: var(--tint); border-radius: 999px; padding: 3px 14px; font-size: 13px;
+  text-decoration: none; white-space: nowrap; transition: background .15s, color .15s;
+}
+.btn:hover { background: var(--chip); color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) { .bar, .btn { transition: none; } }

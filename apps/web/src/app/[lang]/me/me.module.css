@@ -1,0 +1,20 @@
+/* Me (#192): its entries as sections of a column, each on the tinted paper. */
+.page { display: grid; gap: 16px; padding-block: 24px 40px; max-width: 640px; }
+.section { display: grid; gap: 10px; padding: 16px 18px; border-radius: 18px; background: var(--tint); }
+.heading { margin: 0; font-size: 15px; font-weight: 600; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.entry {
+  display: block; padding: 8px 10px; border-radius: 10px; text-decoration: none; color: var(--ink); font-size: 14.5px;
+}
+.entry:hover { background: var(--chip); color: var(--accent); }
+.primary {
+  justify-self: start; padding: 8px 20px; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  text-decoration: none; font-weight: 500; font-size: 14.5px;
+}
+.entry:focus-visible, .primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.account { display: grid; gap: 4px; }
+.who { margin: 0 0 4px; font-size: 14px; color: var(--muted); }
+.who strong { color: var(--ink); font-weight: 600; }
+.note { margin: 0; font-size: 13.5px; color: var(--muted); }
+.settings { display: grid; gap: 14px; }
+.section > [role="group"] { justify-self: start; }

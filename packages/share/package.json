@@ -1,0 +1,24 @@
+{
+  "name": "@saaliheen/share",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Share rules: which Shared Ayahs may be shared, a Share page's address and link, and the text Share hands over.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@saaliheen/dataset": "workspace:*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "eslint": "^9",
+    "typescript": "^5",
+    "typescript-eslint": "^8"
+  }
+}

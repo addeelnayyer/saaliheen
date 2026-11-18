@@ -1,0 +1,13 @@
+/* The Sign-in page (#66) and the Account test sign-in: the admin sign-in page's
+   plain look (#42) on the site's tokens (globals.css). Their buttons and fields
+   are shadcn/ui's (#301, ./account-button.ts). */
+.page { width: 100%; max-width: 720px; margin: 0 auto; display: grid; gap: 8px; align-content: start; }
+.title { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
+.lead { color: var(--muted); margin: 0 0 16px; }
+.who { margin: 0; overflow-wrap: anywhere; }
+.stack { display: grid; gap: 12px; max-width: 360px; }
+.field { display: grid; gap: 6px; font-weight: 500; }
+.error { color: var(--madani); background: var(--madani-bg); padding: 10px 12px; border-radius: 10px; margin: 0 0 16px; }
+
+/* An error inside the Delete Account confirmation (#68), whose grid spaces it. */
+.error.inDialog { margin: 0; }

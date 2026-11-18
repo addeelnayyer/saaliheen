@@ -1,0 +1,304 @@
+/* The reader: a clean page in the manner of quranwbw.com. Words are bare
+   stacks (Arabic, then meaning) flowing right to left with no card frames;
+   Ayahs are parted by hairlines. Interface text follows the page's Language. */
+
+.app { max-width: 1120px; margin: 0 auto; padding-block: 0 64px; display: grid; gap: 20px; }
+
+/* Quran text and numbers (each Script's own text: script-text.module.css). */
+.bismillah, .name, .ar { font-family: var(--f-quran); line-height: var(--q-lh); }
+.sNo, .end { font-family: var(--f-ui); font-variant-numeric: tabular-nums; }
+
+.foot { display: flex; justify-content: center; padding-top: 24px; }
+/* The Surah's one Prev/Next (#192): the word over the neighbouring Surah's number and name. */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(100%, 560px); }
+.neighbour {
+  display: grid; gap: 2px; padding: 12px 16px; border-radius: 16px; background: var(--tint); text-decoration: none;
+  transition: background .15s;
+}
+.neighbour:hover { background: var(--chip); }
+.neighbour.next { grid-column: 2; text-align: end; }
+.neighbourWord { font-size: 12px; color: var(--muted); }
+.neighbourName { font-size: 15px; font-weight: 600; color: var(--accent); }
+
+/* The Surah's heading, centred over the text like a Mushaf's sura banner. */
+.surah {
+  display: grid; justify-items: center; text-align: center; gap: 2px;
+  padding: 18px 16px 20px; border-radius: 22px; background: var(--tint);
+}
+.surah > div { display: flex; align-items: center; justify-content: center; gap: 12px; min-width: 0; }
+.sNo {
+  position: relative; isolation: isolate; width: 40px; height: 40px; display: grid; place-items: center; flex: none;
+  font-weight: 600; font-size: 13px; color: var(--accent);
+}
+.sNo::before, .sNo::after { content: ""; position: absolute; inset: 6px; z-index: -1; border-radius: 4px; background: var(--paper); }
+.sNo::after { rotate: 45deg; }
+.name { font-weight: normal; font-size: calc(40px * var(--q-size)); margin: 0; color: var(--accent); }
+.meta { font-size: 13px; color: var(--muted); }
+.tag { font-size: 11px; padding: 0 8px; border-radius: 999px; background: var(--chip); color: var(--accent); white-space: nowrap; }
+.tag.madani { background: var(--madani-bg); color: var(--madani); }
+
+.reader { display: grid; direction: rtl; }
+.bismillah { margin: 0; padding: 20px 0 8px; text-align: center; font-size: calc(32px * var(--q-size) * var(--arabic-scale)); }
+
+/* Off-screen Ayahs skip rendering, so Al-Baqarah's ~6,100 Words scroll smoothly.
+   An Ayah brought to the top of the screen sits a pixel over the scroll
+   padding's line, so the Ayah above ends just short of it rather than on it:
+   the browser's scroll anchoring then holds the Ayah brought there, not the one
+   above, as the Ayahs around it take their real heights. An off-screen Ayah
+   keeps its last size, which would hold the page at its old width when the
+   window is made narrower; min-width: 0 lets every Ayah follow the page (#129). */
+.ayah {
+  display: grid; gap: 14px; padding-block: 22px 26px; border-bottom: 1px solid var(--line);
+  content-visibility: auto; contain-intrinsic-size: auto 240px; min-width: 0;
+  scroll-margin-top: -1px;
+}
+.reader > .ayah:last-child, .passageAyahs:last-child > .ayah:last-of-type { border-bottom: 0; }
+/* A Passage heading (#41), at the top of the first Ayah of its Passage: a
+   tinted band across the column, the Passage title centred in the accent and
+   its Ayah range quieter beside it, both following Meaning size. Set in the
+   Language's direction, as the Ayah translation is. */
+.passage {
+  margin: 0; padding: 10px 16px; border-radius: 12px; background: var(--tint);
+  text-align: center; font-size: calc(24px * var(--meaning-scale)); font-weight: 600; line-height: 1.4;
+}
+.passageLink { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 2px 12px; color: var(--accent); text-decoration: none; }
+.passageTitle:lang(ur) { font-weight: normal; line-height: var(--ur-lh); }
+.passageLink:hover .passageTitle { text-decoration: underline; text-underline-offset: 6px; }
+.passageRange { font-size: calc(13px * var(--meaning-scale)); font-weight: 500; color: var(--muted); letter-spacing: .03em; }
+/* The Ayah's number as a tinted pill at the start of its row, with a share icon:
+   the button that opens the Ayah's Share page (ayah-share.tsx). */
+.ayahHead {
+  justify-self: start; margin: 0; font-size: 12.5px; font-weight: 500; line-height: calc(var(--lh) * 1.1);
+  display: flex; align-items: center; gap: 6px;
+}
+/* Beside the Ayah's number, a round tinted play button that listens from this Ayah (#109). */
+.listenAyah {
+  font: revert; /* the browser's button font, its 1.9em the size it always was: Preflight makes it inherit (#298) */
+  flex: none; display: inline-grid; place-items: center; width: 1.9em; height: 1.9em; padding: 0;
+  border: 0; border-radius: 50%; background: var(--chip); color: var(--accent); cursor: pointer;
+  transition: background .15s;
+}
+.listenAyah::before { content: "▶" / ""; font-size: 9px; line-height: 1; margin-inline-start: 2px; }
+.listenAyah:hover { background: var(--hi); }
+.share, .sharePassage {
+  color: var(--accent); background: var(--chip); border: 0; border-radius: 999px; cursor: pointer;
+  transition: background .15s;
+}
+.share { font: inherit; padding: 0 10px 0 12px; display: inline-flex; align-items: center; gap: 6px; }
+.share:hover, .sharePassage:hover { background: var(--hi); }
+/* A Passage heading's share button (#56): the share icon alone in a round tinted
+   button, on the heading's line, after the Passage title and range. Sized in em
+   from the heading's font, so the icon matches the Passage title at any Meaning size. */
+.sharePassage {
+  font-size: inherit; vertical-align: middle; width: 1.6em; height: 1.6em; padding: 0; margin-inline-start: .35em;
+  display: inline-grid; place-items: center;
+}
+/* The share icon: an arrow rising out of a tray, in the button's colour. */
+.share::after, .sharePassage::after {
+  content: ""; width: 12px; height: 12px; background: currentColor; opacity: .8;
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 10.5V2.5M5 5.5l3-3 3 3M3.5 8.5v5h9v-5'/%3E%3C/svg%3E");
+  -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat;
+}
+.sharePassage::after { width: .8em; height: .8em; }
+
+/* The Ayah translation, under the Ayah's Words: on the page, hidden until switched on.
+   Its box is as wide as the row of Word cards above it, so in either direction it leaves no gap at
+   one edge that the row does not. */
+.translation { margin: 0; padding-inline: 8px; font-size: calc(15.5px * var(--meaning-scale)); line-height: 1.7; color: var(--ink); }
+.translation:lang(ur) { line-height: var(--ur-lh); }
+:global(html:not([data-translation="on"])) .ayah .translation { display: none; }
+
+/* An Ayah's Theme chips (#129): a row of soft pills at its foot that wraps
+   onto more lines, never sideways; sized with the Meaning size, in the Language's direction. */
+.footer { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 8px; min-width: 0; }
+.themes, .iltifat { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; min-width: 0; }
+/* The chips themselves are shadcn/ui's Badge, styled in ayah.tsx (#306): a Theme chip
+   filled, an Iltifat chip (#140) the same pill outlined and unfilled, so it reads apart. */
+.tiles { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 4px; }
+.tile {
+  display: grid; justify-items: center; align-content: start; text-align: center;
+  /* Grows with the text sizes, so larger text wraps the cards onto more rows rather than squeezing them. */
+  min-width: 72px; max-width: min(calc(200px * max(var(--arabic-scale), var(--meaning-scale))), 100%); padding: 5px 9px 7px; border: 1px solid transparent; border-radius: 14px;
+  background: var(--tile-bg, var(--surface)); transition: background .15s, border-color .15s;
+}
+.tile:hover { background: var(--tint); }
+.tile:target { background: var(--hi); border-color: var(--accent); }
+/* Phrase colours (#99): a covered Passage's Word cards alternate tint A and B,
+   Phrase by Phrase, unless the reader switched them off. The Arabic, the Word
+   meaning and the Root tag keep their own colours; hover and :target still win. */
+:global(html:not([data-phrase-colours="off"])) .tile[data-phrase="a"] { --tile-bg: var(--phrase-a); }
+:global(html:not([data-phrase-colours="off"])) .tile[data-phrase="b"] { --tile-bg: var(--phrase-b); }
+/* Known words colour (#250, #251): on the Surah page, while it is on, the Word
+   cards of a Known Root or Known particle are green in place of the Phrase
+   colours, and every other card is on the paper (--known-word-tint is set only
+   on their cards, by the <style> known-words-tint.ts writes, so elsewhere --tile-bg is invalid and
+   falls back). As specific as the Phrase colours' rules, it wins by coming
+   after them; hover, :target, the Recited Word's ring and Allah reference
+   colour still draw over it. */
+:global(html[data-known-words-colour="on"]) .reader .tile { --tile-bg: var(--known-word-tint); }
+/* The Recited Word (#115): its card ringed in the accent, over its Phrase
+   colour, which stays; its Ayah faintly tinted. Set by recitation.tsx. */
+.tile[data-recited] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.ayah[data-recited] { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+/* A Word is never broken across lines, even on a card laid out too narrow for it. */
+.ar { font-size: calc(32px * var(--q-size) * var(--arabic-scale)); white-space: nowrap; }
+/* An Allah reference's Arabic in Allah reference colour (#147), unless the reader
+   switched it off (#148); its Word meaning, Root tag and Phrase colour stay as they are. */
+:global(html:not([data-allah-reference-colour="off"])) .tile[data-allah-reference] .ar { color: var(--allah); }
+.mean { font-size: calc(13px * var(--meaning-scale)); line-height: 1.4; padding-top: 2px; color: var(--muted); max-width: 100%; overflow-wrap: anywhere; }
+.mean:lang(ur) { font-size: calc(14px * var(--meaning-scale)); line-height: var(--ur-lh); padding-top: 0; }
+/* Hide Word meanings (#256): on a Surah page, in Study, no Word card shows its
+   Word meaning but keeps its space, so no card moves; one tapped while no
+   Recitation plays shows it (data-revealed, set by word-meanings.ts). Its
+   Root tag stays. Flowing shows no Word meanings anyway, and the Settings
+   drawer's preview is no Surah page. */
+:global(html[data-hide-word-meanings="on"]) .reader .tile:not([data-revealed]) .mean { visibility: hidden; }
+:global(html[data-hide-word-meanings="on"]) .reader .tile { cursor: pointer; }
+:global(html[data-hide-word-meanings="on"]) .reader .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* The Ayah's end: its number in a small eight-pointed star, after its last Word. */
+.end {
+  position: relative; isolation: isolate; align-self: center; width: 34px; height: 34px; margin-inline: 6px;
+  display: grid; place-items: center; font-size: 11px; font-weight: 600; color: var(--accent);
+}
+.end::before, .end::after { content: ""; position: absolute; inset: 6px; z-index: -1; border-radius: 3px; border: 1.5px solid currentColor; opacity: .55; }
+.end::after { rotate: 45deg; }
+
+/* A Word's Root tag (its Root's letters) or Particle tag (its particle in the Script), with ↗, opening its dialog. */
+.wordTag {
+  font: inherit; font-family: var(--f-quran); color: var(--accent); background: var(--chip); border: 0; border-radius: 999px;
+  font-size: calc(17px * var(--q-size)); line-height: 1.6; padding: 1px 12px 3px; margin-top: 4px; word-spacing: .12em; white-space: nowrap;
+  display: inline-flex; gap: 6px; align-items: center; cursor: pointer;
+}
+.wordTag::after { content: "↗" / ""; font-family: var(--f-ui); font-size: 11px; opacity: .75; transform: scaleX(-1); }
+.wordTag:hover { background: var(--hi); }
+
+/* A Passage's Ayahs (#125). In Study the group draws nothing of its own: its
+   Ayahs are laid out as if it were not there, and so does an Ayah's last Word
+   held with its end, and the Passage's Ayah translation paragraph is not drawn. */
+.passageAyahs, .ending { display: contents; }
+.passageTranslation { display: none; margin: 1em 0; line-height: 1.7; } /* a p's margins, which Preflight zeroes (#298) */
+.passageTranslation:lang(ur) { line-height: var(--ur-lh); }
+
+/* A Passage's Tafsir (#234), after its last Ayah in Study and in Flowing: a
+   tinted panel across the column in the Language's direction, each Tafsir
+   entry under its Ayahs in the accent, at the Meaning size; the credit line
+   quieter at its foot. Long Tafsir off screen skips rendering, as Ayahs do. */
+.tafsir {
+  display: grid; gap: 14px; margin: 18px 0 22px; padding: 16px 18px; border-radius: 12px; background: var(--tint);
+  font-size: calc(15.5px * var(--meaning-scale)); line-height: 1.7; color: var(--ink);
+  content-visibility: auto; contain-intrinsic-size: auto 320px; min-width: 0; overflow-wrap: break-word;
+}
+.tafsir:lang(ur) { line-height: var(--ur-lh); }
+.tafsirEntries { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.tafsirEntry { display: grid; gap: 4px; }
+.tafsirAyahs { margin: 0; font-size: 13px; font-weight: 600; color: var(--accent); }
+.tafsirText { margin: 0; white-space: pre-line; }
+.tafsirCredit { margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
+/* The Ayah ranges and the credit line are English in an Urdu Tafsir too, in the interface typeface. */
+.tafsir :is(.tafsirAyahs, .tafsirCredit) { font-family: var(--f-ui); }
+
+/* Flowing (#125), chosen by data-ayah-layout on <html>: each Passage's Words run
+   on together as lines of text, the Passage starting on its own below the one
+   before. A Word shows only its Arabic; no Word meaning, Root tag or Ayah
+   heading, and no Theme chips (#129). The same Ayahs and Words as Study, keeping their ids, restyled.
+   Off-screen Passages skip rendering, as off-screen Ayahs do in Study. */
+:global(html[data-ayah-layout="flowing"]) .passageAyahs {
+  display: block; padding-block: 22px 26px; border-bottom: 1px solid var(--line);
+  content-visibility: auto; contain-intrinsic-size: auto none auto 480px; /* a height only: a width would widen the column on a phone */
+}
+:global(html[data-ayah-layout="flowing"]) .passageAyahs:last-child { border-bottom: 0; }
+:global(html[data-ayah-layout="flowing"]) .passageAyahs > .ayah,
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .tiles { display: inline; padding: 0; border: 0; }
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .tile { display: inline-grid; vertical-align: middle; }
+/* A Word is as wide as its Arabic, a word space apart from the next as in a
+   printed mushaf (the Share page's Flowing), not a card: its Phrase colour a
+   band behind it that joins the next Word's in the same Phrase. Wins over the
+   phone's card size below. */
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .tile.tile {
+  min-width: 0; padding: 2px calc(4px * var(--q-size) * var(--arabic-scale)) 4px; border-radius: 6px;
+}
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .end { display: inline-grid; vertical-align: middle; }
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .passage { margin-bottom: 14px; }
+:global(html[data-ayah-layout="flowing"]) .passageAyahs :is(.ayahHead, .mean, .wordTag, .translation, .footer) { display: none; }
+/* An Ayah's last Word and its end marker, never parted by a line break: one
+   unbreakable box on the line, so the line may still break after it, before
+   the next Ayah's first Word, as it does between any two Words. */
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .ending { display: inline-flex; align-items: center; vertical-align: middle; }
+/* With the Ayah translation switch on, the Passage's Ayah translations follow
+   its Arabic as one paragraph at the Meaning size, each Ayah's number a small
+   superscript (as the Share page's Flowing sets them). */
+:global(html[data-ayah-layout="flowing"][data-translation="on"]) .passageTranslation {
+  display: block; margin: 18px 0 0; padding-inline: 8px;
+  font-size: calc(15.5px * var(--meaning-scale)); color: var(--ink); overflow-wrap: break-word;
+}
+/* Listening in Flowing (#126). The Recited Word keeps Study's ring, set in the
+   running text; its Ayah has no faint tint, but while a Word is marked (the
+   Recitation bar on screen, playing or paused) the Arabic and the Ayah ends of
+   every other Ayah are dimmed, mixed toward the page: still at least 3:1 over
+   the Phrase colours in either theme. The Phrase colours, the Ayah translation
+   paragraphs and the recited Ayah are drawn as ever; stopping unmarks it all.
+   An Allah reference's gold is its letters' own colour, so it dims with its
+   Ayah, mixed toward the page as the Ayah end is, and stays gold (#149):
+   dimmed, the light theme's gold falls below 3:1, as no dimmed gold can keep
+   it, the gold itself being under 3.75:1 over the Phrase colours. */
+:global(html[data-ayah-layout="flowing"]) .passageAyahs > .ayah[data-recited] { background: none; }
+:global(html[data-ayah-layout="flowing"]) .reader:has(.ayah[data-recited]) .ayah:not([data-recited]) .ar {
+  color: color-mix(in srgb, var(--ink) 60%, var(--paper));
+}
+:global(html[data-ayah-layout="flowing"]:not([data-allah-reference-colour="off"])) .reader:has(.ayah[data-recited]) .ayah:not([data-recited]) .tile[data-allah-reference] .ar {
+  color: color-mix(in srgb, var(--allah) 75%, var(--paper));
+}
+:global(html[data-ayah-layout="flowing"]) .reader:has(.ayah[data-recited]) .ayah:not([data-recited]) .end {
+  color: color-mix(in srgb, var(--accent) 75%, var(--paper));
+}
+:global(html[data-ayah-layout="flowing"]) .passageAyahs .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.ayahNumber { font-size: .65em; color: var(--accent); margin-inline: 2px; vertical-align: super; line-height: 0; font-variant-numeric: tabular-nums; position: static; } /* Preflight lifts a sup again (#298) */
+
+/* Section marks (#194): a rule across the column, faded toward its ends, and
+   at its middle a pill medallion in the accent holding the sign (۞ for a Hizb
+   quarter, ع for a Ruku) on an accent disc and the label. A mark is set
+   between Ayahs in Study and between the running Ayahs in Flowing, where it
+   starts a line of its own. Both kinds are in the page; data-section-marks on
+   <html> shows one (ADR 0044). */
+.sectionMark {
+  display: flex; align-items: center; gap: 12px; padding-block: 18px 4px;
+  color: var(--accent); font-family: var(--f-ui);
+}
+.sectionMark::before, .sectionMark::after { content: ""; flex: 1; height: 1px; opacity: .45; }
+.sectionMark::before { background: linear-gradient(90deg, transparent, var(--accent)); }
+.sectionMark::after { background: linear-gradient(90deg, var(--accent), transparent); }
+.medal {
+  display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 4px; border: 1px solid var(--accent);
+  border-radius: 999px; font-size: 12.5px; font-weight: 600; letter-spacing: .02em; line-height: 1.4; white-space: nowrap;
+}
+/* The sign is drawn in the reader's Quran font, whose line box is not its ink:
+   centred by its line box, each sign sits low in the disc (ع furthest, its tail
+   descending) and ع a little right. --sign-low and --sign-right are how far
+   the sign's ink falls from the disc's middle in each Script, measured on the
+   built site (features/site/section-marks.feature, "sits in the middle of its
+   disc"); the sign is moved back by as much. */
+.markSign {
+  --sign-low: 2px; --sign-right: .5px;
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent); font-family: var(--f-quran); font-size: 17px; line-height: 1;
+}
+.markSign > span { translate: calc(-1 * var(--sign-right)) calc(-1 * var(--sign-low)); }
+.rukuMark .markSign { --sign-low: 4.5px; --sign-right: 1.375px; }
+:global(html[data-script="indopak"]) .hizbMark .markSign { --sign-low: 3.25px; --sign-right: 0px; }
+:global(html[data-script="indopak"]) .rukuMark .markSign { --sign-low: 6.625px; --sign-right: 2.75px; }
+:global(html[data-section-marks="ruku"]) .hizbMark,
+:global(html:not([data-section-marks="ruku"])) .rukuMark { display: none; }
+:global(html[data-ayah-layout="flowing"]) .passageAyahs > .sectionMark:first-child { padding-top: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .sectionMark { animation: markIn .3s ease both; }
+}
+@keyframes markIn { from { opacity: 0; } }
+
+@media (max-width: 520px) {
+  .tile { min-width: 60px; padding-inline: 6px; }
+  .ar { font-size: calc(28px * var(--q-size) * var(--arabic-scale)); }
+  .name { font-size: calc(32px * var(--q-size)); }
+}
+
+@media (prefers-reduced-motion: reduce) { .tile, .neighbour { transition: none; } }

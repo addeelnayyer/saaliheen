@@ -1,0 +1,10 @@
+/* The skeleton of a Theme page opened in parts (#131): rows laid out as its
+   Ayahs will be, a line of Arabic and one of Ayah translation each, in the
+   tinted box of a Passage group's Ayahs. Their shine is the shared one
+   (../../../in-parts/in-parts.module.css). */
+
+.rows { pointer-events: none; }
+.row { gap: 12px; }
+.arabic { justify-self: end; width: 92%; height: calc(28px * var(--arabic-scale) * 1.6); }
+.translation { width: 70%; height: calc(15.5px * var(--meaning-scale) * 1.4); border-radius: 10px; }
+:global(html:not([data-translation="on"])) .translation { display: none; }

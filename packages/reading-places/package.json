@@ -1,0 +1,21 @@
+{
+  "name": "@saaliheen/reading-places",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Reading places rules: ten Reading places at most, one per Surah, newest first, moved and brought to the top by reading.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "eslint": "^9",
+    "typescript": "^5",
+    "typescript-eslint": "^8"
+  }
+}

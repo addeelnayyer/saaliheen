@@ -1,0 +1,70 @@
+/* A Grammar page (#275): each Ayah a row of Words, right to left, each Word
+   its Arabic, its Word meaning and its Grammar line, stacked. A Word's Part
+   of speech (data-part-of-speech, N, V or P) sets --part-of-speech, the colour
+   its Grammar line and the underline beneath its Arabic are drawn in; the
+   Arabic letters keep the ink. Set out as a Surah page is (#278): Passage
+   headings, Ayah headings and the Ayah translation drawn as its own are. A Word opens its Word grammar dialog. */
+/* The head (#279): the way back to Explore, the title, then the Surah picker, the Grammar guide (#280) and the Language switch. */
+.head { display: grid; gap: 10px; padding: 20px 16px 0; }
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.guideLink { font-size: 13.5px; color: var(--accent); text-underline-offset: 3px; }
+.guideLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.page { display: grid; gap: 16px; padding-inline: 16px; padding-bottom: 32px; min-width: 0; }
+/* Off screen, an Ayah is not drawn until it nears the screen, as on a Surah
+   page: Al-Baqarah has some 6,100 Words. A height only: a width would widen
+   the column on a phone. */
+.ayah {
+  display: grid; gap: 10px; padding-block: 12px 18px; border-bottom: 1px solid var(--line); min-width: 0;
+  content-visibility: auto; contain-intrinsic-size: auto none auto 240px;
+}
+/* A Passage heading (#41) as a Surah page draws it: a tinted band, the Passage
+   title centred in the accent and its Ayah range quieter beside it, both
+   following Meaning size; in the Language's direction. */
+.passage {
+  margin: 0; padding: 10px 16px; border-radius: 12px; background: var(--tint);
+  text-align: center; font-size: calc(24px * var(--meaning-scale)); font-weight: 600; line-height: 1.4;
+}
+.passageLink { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 2px 12px; color: var(--accent); text-decoration: none; }
+.passageTitle:lang(ur) { font-weight: normal; line-height: var(--ur-lh); }
+.passageLink:hover .passageTitle { text-decoration: underline; text-underline-offset: 6px; }
+.passageRange { font-size: calc(13px * var(--meaning-scale)); font-weight: 500; color: var(--muted); letter-spacing: .03em; }
+/* The Ayah's number, a tinted pill at the start of its row. */
+.ayahHead {
+  justify-self: start; margin: 0; padding: 0 12px; border-radius: 999px; background: var(--chip); color: var(--accent);
+  font-size: 12.5px; font-weight: 500; line-height: calc(var(--lh) * 1.1);
+}
+.words { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px 6px; margin: 0; padding: 0; list-style: none; min-width: 0; }
+.word {
+  font: inherit; color: inherit; background: none; border: 1px solid transparent; margin: 0;
+  display: grid; justify-items: center; align-content: start; gap: 2px; text-align: center; min-width: 72px; max-width: 100%; padding: 4px 8px;
+  border-radius: 10px; cursor: pointer; transition: background .15s, border-color .15s;
+}
+/* A Word opens its Word grammar dialog (#277). */
+.word:hover { background: var(--tint); }
+.word:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* The Word a Word location link opens the page at (#279), marked as on a Surah page. */
+.word:target { background: var(--hi); border-color: var(--accent); }
+/* A Word is never broken across lines. */
+.ar {
+  font-size: calc(32px * var(--q-size) * var(--arabic-scale)); white-space: nowrap; color: var(--ink);
+  padding-bottom: 2px; border-bottom: 3px solid var(--part-of-speech, transparent);
+}
+.mean { font-size: calc(13px * var(--meaning-scale)); line-height: 1.4; color: var(--muted); max-width: 100%; overflow-wrap: anywhere; }
+.mean:lang(ur) { font-size: calc(14px * var(--meaning-scale)); line-height: var(--ur-lh); }
+.line { font-family: var(--f-ui); font-size: calc(12px * var(--meaning-scale)); line-height: 1.5; color: var(--part-of-speech, var(--muted)); direction: ltr; max-width: 100%; overflow-wrap: anywhere; }
+.line [lang="ar"] { font-family: var(--f-uthmani); }
+/* The Ayah translation, under the Ayah's Words, as a Surah page draws it: hidden until switched on. */
+.translation { margin: 0; padding-inline: 8px; font-size: calc(15.5px * var(--meaning-scale)); line-height: 1.7; color: var(--ink); overflow-wrap: break-word; }
+.translation:lang(ur) { line-height: var(--ur-lh); }
+:global(html:not([data-translation="on"])) .translation { display: none; }
+
+/* The skeleton (#278): placeholders sized as an Ayah's heading and Words will
+   be; their shine is the shared one (../../in-parts/in-parts.module.css). */
+.ghostAyah { pointer-events: none; content-visibility: visible; }
+.ghostHead { justify-self: start; width: 64px; height: calc(12.5px * var(--lh) * 1.1); border-radius: 999px; }
+.ghostWord {
+  max-width: 100%; border-radius: 10px;
+  height: calc(32px * var(--q-size) * var(--arabic-scale) * var(--q-lh) + 13px * 1.4 * var(--meaning-scale) + 26px);
+}
+
+@media (prefers-reduced-motion: reduce) { .word { transition: none; } }

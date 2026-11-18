@@ -1,0 +1,29 @@
+/* The Known words page on Me (#248): a column like Me's, its tabs over a tinted
+   panel holding the count, the search and the Roots. Each Root's row is laid
+   out like the Root dialog's Lemma rows, a bilingual glossary: Memorized?
+   leads, the meanings read from the left and the Arabic sits flush right, a
+   Root's a link to its Root page (#289). */
+.page { display: grid; gap: 16px; padding-block: 24px 40px; max-width: 640px; }
+.panel { display: grid; gap: 12px; padding: 16px 18px; border-radius: 18px; background: var(--tint); }
+.head { display: grid; gap: 10px; }
+.count { margin: 0; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; }
+.row {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 4px 12px; align-items: center;
+  padding: 6px 2px; border-bottom: 1px solid var(--line);
+}
+.row:last-child { border-bottom: 0; }
+.letters {
+  grid-column: 3; grid-row: 1; justify-self: end; font-family: var(--f-quran); line-height: var(--q-lh);
+  font-size: calc(24px * var(--q-size) * var(--arabic-scale)); color: var(--accent); word-spacing: .2em; white-space: nowrap;
+}
+a.letters { text-decoration: none; border-radius: 6px; }
+a.letters:hover { text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1px; }
+a.letters:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.meanings {
+  grid-column: 2; grid-row: 1; justify-self: start; text-align: left; min-width: 0; overflow-wrap: anywhere;
+  font-size: calc(14px * var(--meaning-scale)); color: var(--muted);
+}
+.meanings:lang(ur) { font-size: calc(15px * var(--meaning-scale)); }
+.row > button { grid-column: 1; grid-row: 1; }
+.none { margin: 0; font-size: 14px; color: var(--muted); }

@@ -1,0 +1,38 @@
+/* The Supplications page (#199), after the Iltifat direction pages
+   (../iltifat/iltifat.module.css): its heading, then one entry per
+   Supplication, or one of the Other words to Allah when shown (#200): a
+   heading linking into the Surah beside the Speaker (and the kind, for the
+   Other words to Allah), and the Ayahs (../ayah-list.module.css). */
+
+.page { display: grid; gap: 28px; min-width: 0; }
+
+.entry { display: grid; gap: 10px; min-width: 0; }
+
+.entryHeader { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.entryHeading { margin: 0; font-size: 15px; font-weight: 600; }
+.entryHeading a { color: var(--accent); text-decoration: none; letter-spacing: .02em; }
+.entryHeading a:hover { text-decoration: underline; }
+
+.speaker {
+  margin: 0; padding: 1px 10px; border-radius: 999px; background: var(--chip);
+  color: var(--ink); font-size: 13px; font-weight: 500; overflow-wrap: anywhere;
+}
+
+/* The filters (#200): the Opening chips, a tinted tray of Toggles each with
+   its count (./filters.tsx), wrapping on a narrow screen; then the two
+   switches (../site-bar.module.css) and the Language switch. */
+.filters { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
+.chips {
+  display: flex; flex-wrap: wrap; width: fit-content; gap: 2px; padding: 3px;
+  border-radius: 16px; background: var(--tint);
+}
+.arabic { font-family: var(--f-uthmani); font-size: 15px; }
+.count { font-variant-numeric: tabular-nums; font-size: 12px; opacity: .8; }
+
+/* One of the Other words to Allah: its kind, so it is never taken for a Supplication. */
+.kind {
+  margin: 0; padding: 1px 10px; border-radius: 999px; border: 1px dashed var(--muted);
+  color: var(--muted); font-size: 12.5px; font-style: italic;
+}
+
+.empty { margin: 0; color: var(--muted); }

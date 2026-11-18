@@ -1,0 +1,100 @@
+/* Frame B, "Mushaf" (#55): an illuminated page drawn in code. An outer gold
+   line around a band of repeating eight-point stars; inside, a paper sheet
+   with a fine gold rule and a double gold inner rule. A light look (cream
+   paper, dark-green band, gold) and a dark look (deep green-black paper,
+   gold) that follow the device's colour scheme alone: the reader's saved
+   theme does not apply here, nor do the Arabic size and Meaning size. */
+.page {
+  --gold: #b0882f; --paper: #fbf4e2; --ink: #2b2116; --band: #1f3b2f; --page: #e9dfc6;
+  --star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cg fill='none' stroke='%23d1ad55' stroke-width='1.2'%3E%3Crect x='9' y='9' width='14' height='14'/%3E%3Crect x='9' y='9' width='14' height='14' transform='rotate(45 16 16)'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23d1ad55'/%3E%3C/g%3E%3C/svg%3E");
+  /* Full bleed over the body's side gutter; at least one screen tall, growing with its Ayahs. */
+  margin-inline: -16px;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 16px 12px 12px;
+  background: var(--page); color: var(--ink);
+  color-scheme: light;
+  /* Allah reference colour (#149) follows the frame's look, i.e. the device's
+     colour scheme, not the reader's saved theme (which sets --allah on <html>):
+     the values are the site's --allah tokens for each look (globals.css), set
+     here so the saved theme cannot put a dark-theme gold on the cream paper. */
+  --allah: #A87A0A;
+}
+@media (prefers-color-scheme: dark) {
+  .page { --allah: #E3B84F; --gold: #d1ad55; --paper: #12201a; --ink: #efe6cf; --band: #0a1410; --page: #070d0a; color-scheme: dark; }
+}
+
+/* The brand bar above the frame (#192): the site's top bar, holding only the
+   brand and the Language switch, in the reader's colours, not the frame's. */
+.brandBar { align-items: center; }
+
+.band {
+  width: 100%; max-width: 720px; flex: 1; display: flex;
+  padding: 14px; border: 2px solid var(--gold); border-radius: 4px;
+  background: var(--star), var(--band);
+}
+.sheet {
+  flex: 1; min-width: 0; display: flex; flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--gold); outline: 4px double var(--gold); outline-offset: -10px;
+  padding: 22px clamp(18px, 5vw, 40px) 20px;
+}
+
+/* ---- headpiece */
+.head { display: flex; flex-direction: column; align-items: center; color: var(--gold); }
+.dome { width: 108px; height: auto; display: block; }
+.cartouche {
+  width: 100%; border: 1.5px solid var(--gold); border-radius: 999px; padding: 8px 20px 10px;
+  background: color-mix(in srgb, var(--gold) 10%, transparent); text-align: center; color: var(--ink);
+}
+.surahArabic { margin: 0; font-size: clamp(24px, 6vw, 30px); line-height: 1.7; }
+.surahLatin { margin: 0; color: var(--gold); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; }
+.passageTitle { margin: 6px 0 0; font-size: 17px; font-weight: 500; line-height: 1.6; }
+.passageTitle[lang="ur"] { line-height: var(--ur-lh); }
+
+/* ---- the Shared Ayahs, in the address's Script */
+.uthmani { font-family: var(--f-uthmani); }
+.indopak { font-family: var(--f-indopak); }
+.ayahs { display: flex; flex-direction: column; gap: 22px; padding: 24px 0 20px; }
+.ayah { display: flex; flex-direction: column; gap: 10px; }
+.between { display: block; width: 96px; height: auto; margin: 0 auto 10px; color: var(--gold); }
+.arabic {
+  margin: 0; text-align: center; overflow-wrap: break-word;
+  font-size: clamp(24px, 6vw, 36px); line-height: 2.1;
+}
+.arabic.indopak { line-height: 2.3; }
+/* An Allah reference's Arabic letters in Allah reference colour (#149), unless
+   the reader switched it off on this device (#148); it is the letters' own
+   colour, so it dims with any Ayah that is dimmed. Ayah ends and translations
+   are not marked, so they stay as they were. */
+:global(html:not([data-allah-reference-colour="off"])) .arabic [data-allah-reference] { color: var(--allah); }
+/* the last Word and the Ayah end, held on one line as a printed mushaf holds them */
+.ending { white-space: nowrap; }
+.translation { margin: 0; text-align: center; font-size: clamp(15.5px, 3.8vw, 17px); line-height: 1.7; overflow-wrap: break-word; }
+.translation[lang="ur"] { font-size: clamp(17px, 4.4vw, 19px); line-height: var(--ur-lh); }
+.number { font-size: 0.65em; color: var(--gold); margin-inline: 2px; vertical-align: super; line-height: 0; position: static; /* Preflight lifts a sup again (#298) */ }
+
+/* ---- tailpiece and colophon: at the foot of the screen when the Ayahs are short, after them when long */
+.foot { margin-top: auto; text-align: center; font-size: 13px; }
+.foot p { margin: 3px 0; }
+.foot a { color: var(--gold); }
+.tail { display: block; width: 150px; height: auto; margin: 4px auto 8px; color: var(--gold); }
+.brand { letter-spacing: 0.3em; text-transform: uppercase; font-size: 12px; color: var(--gold); }
+
+/* ---- below the frame: the visitor's Share layout toggle and "Share your own" */
+.visitor {
+  display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: center;
+  margin-top: 12px; font-size: 13px;
+}
+.visitor > a { color: inherit; opacity: 0.7; }
+.toggle { display: inline-flex; border: 1px solid var(--gold); border-radius: 999px; overflow: hidden; }
+
+/* ---- the sharer's Share and Copy text buttons (#56), and how copying went */
+.sharer { display: inline-flex; gap: 8px; }
+/* At the top of the screen: the buttons sit at its foot when the Ayahs are short. */
+.message {
+  position: fixed; inset-inline: 0; top: max(24px, env(safe-area-inset-top)); z-index: 20; margin-inline: auto; width: max-content;
+  padding: 6px 16px; border-radius: 999px; background: var(--ink); color: var(--paper);
+  font-size: 13px; pointer-events: none; transition: opacity .2s, translate .2s, visibility .2s;
+}
+.message[data-shown="false"] { opacity: 0; translate: 0 -8px; visibility: hidden; }

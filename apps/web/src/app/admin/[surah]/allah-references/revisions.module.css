@@ -1,0 +1,15 @@
+/* A Surah's Allah reference revisions (#154): one card per revision, newest first. */
+.revisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.revision { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.version { font-weight: 600; }
+.by { overflow-wrap: anywhere; min-width: 0; }
+.time { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; margin-inline-end: auto; }
+.words { display: grid; grid-template-columns: 8ch 1fr; gap: 8px; align-items: baseline; }
+.wordsHeading { font-size: 14px; font-weight: 500; color: var(--muted); margin: 0; }
+.wordList { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; min-width: 0; }
+.word { display: inline-flex; align-items: baseline; gap: 6px; }
+.arabic { font-family: var(--font-qpc-hafs), serif; font-size: 22px; color: var(--allah); }
+.location { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.none { color: var(--muted); margin: 0; font-size: 14px; }
+.done { background: var(--tint); padding: 10px 12px; border-radius: 10px; margin: 0 0 16px; }

@@ -1,0 +1,126 @@
+/* The top bar (#192): a slim strip on the paper, full bleed with a hairline
+   under it, holding the brand, Read, Explore and Me from 900px wide, and Sign
+   in while signed out. Below 900px the destinations move to the tab bar along
+   the foot of the screen. Controls are soft tinted pills with no borders. The
+   brand mark is set in the active Script's typeface, so the other Script's
+   never downloads. */
+
+.bar {
+  display: flex; align-items: stretch; gap: 16px; min-height: 56px; background: var(--paper);
+  /* Paint the paper and the hairline edge to edge beyond the centred column. */
+  box-shadow: 0 0 0 100vmax var(--paper), 0 1px 0 100vmax var(--line);
+  clip-path: inset(0 -100vmax -1px);
+  position: sticky; top: 0; z-index: 10;
+}
+/* On a Surah page the Surah bar holds it instead ([surah]/surah-bar.module.css). */
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; border-radius: 10px; margin-inline-end: auto; }
+.mark {
+  width: 36px; height: 36px; border-radius: 10px; background: var(--chip); color: var(--accent);
+  display: grid; place-items: center; font-family: var(--f-quran); font-size: 22px; line-height: 1; padding-top: 5px;
+}
+.name { font-family: var(--f-ui); font-size: 17px; font-weight: 600; letter-spacing: .01em; }
+
+/* The destinations: on the top bar, words in a row, the current one on a chip. */
+.top { display: none; }
+.top .destination {
+  align-self: center; padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted); text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.top .destination:hover { color: var(--accent); }
+
+/* The tab bar: along the foot of the screen below 900px, an icon over each
+   name. On a Surah page it leaves while reading down, as the Surah bar shows
+   its mini form, and while the Recitation bar is on screen, sliding off the
+   foot (or, with reduced motion, simply gone). */
+.tabs {
+  position: fixed; inset: auto 0 0 0; z-index: 20; display: flex; justify-content: space-around;
+  padding: 4px 8px calc(4px + env(safe-area-inset-bottom)); background: var(--paper); border-top: 1px solid var(--line);
+  transition: transform .2s ease-out, visibility 0s;
+}
+.tabs .destination {
+  flex: 1; max-width: 120px; display: grid; justify-items: center; gap: 2px; padding: 6px 4px; border-radius: 14px;
+  font-size: 11.5px; color: var(--muted); text-decoration: none;
+}
+/* The current destination, on either bar, on a chip (after both bars' rules, which it outranks). */
+.destination[aria-current="page"] { background: var(--chip); color: var(--accent-on-chip); font-weight: 600; }
+.icon { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.destination:focus-visible, .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Room under the page for the tab bar. */
+@media (max-width: 899px) { :global(body):has(.tabs) { padding-bottom: calc(64px + env(safe-area-inset-bottom)); } }
+/* Away while the Surah bar is mini, while the Recitation bar is on screen, and
+   before the Surah bar hydrates on a Surah page opened at an Ayah (already
+   mini by CSS). Only a Surah page has the slim row (data-slim-row), so any
+   other page opened at a fragment keeps its tab bar. */
+:global(html):has([data-form="mini"]) .tabs,
+:global(html):has([data-recitation-bar]) .tabs,
+:global(html:has(:target):has([data-slim-row]):not(:has([data-form]))) .tabs {
+  transform: translateY(100%); visibility: hidden; transition: transform .2s ease-out, visibility 0s .2s;
+}
+/* From 900px wide the destinations are on the top bar instead. */
+@media (min-width: 900px) {
+  .top { display: flex; gap: 4px; }
+  .tabs { display: none; }
+}
+
+
+/* The Translation language switch: a link to each Language on a tinted track. */
+.seg { display: inline-flex; border-radius: 999px; padding: 3px; background: var(--tint); }
+.seg > a {
+  padding: 0 12px; border-radius: 999px; font-size: 12.5px;
+  color: var(--muted); white-space: nowrap; text-decoration: none; transition: color .15s;
+}
+.seg > a:hover { color: var(--accent); }
+/* The selected option: the current Language by its link; the Script, theme,
+   Ayah layout and Section marks (ToggleGroups, reader-settings.tsx) by
+   <html>'s attributes (no data-theme is System), so the prerendered bar and
+   Me already show the saved settings before hydration. Unselected options
+   stay transparent. */
+.seg > [aria-current="page"],
+html:not([data-script="indopak"]) .scriptSeg > [data-value="uthmani"],
+html[data-script="indopak"] .scriptSeg > [data-value="indopak"],
+html:not([data-theme="light"]):not([data-theme="dark"]) .themeSeg > [data-value="system"],
+html[data-theme="light"] .themeSeg > [data-value="light"],
+html[data-theme="dark"] .themeSeg > [data-value="dark"],
+html:not([data-ayah-layout="flowing"]) .layoutSeg > [data-value="study"],
+html[data-ayah-layout="flowing"] .layoutSeg > [data-value="flowing"],
+html:not([data-section-marks="ruku"]) .marksSeg > [data-value="hizb"],
+html[data-section-marks="ruku"] .marksSeg > [data-value="ruku"] {
+  background: var(--paper); color: var(--accent); font-weight: 500; box-shadow: 0 1px 2px var(--shadow);
+}
+/* اردو and English share Urdu's line height, so the switch's two links stand as tall. */
+.seg > .urFace { font-family: var(--f-ur); }
+.seg > .enFace { font-family: var(--f-ui); line-height: var(--ur-lh); }
+
+/* A reader setting's on/off switch (Ayah translation, Phrase colours, Allah
+   reference colour, Known words colour, Hide Word meanings; the Switch,
+   components/ui/switch.tsx) is drawn on or off by its own <html> attribute,
+   named by its data-setting, not by its state: already in place at first
+   paint, so a knob slides only when the reader flips it, never as a page
+   loads or hydrates. Ayah translation, Known words colour and Hide Word
+   meanings are off unless "on"; the other two on unless "off". A switch that
+   is no reader setting (Memorized?, the Supplications page's) is drawn by its
+   own state. */
+.setting { --switch-track: var(--line); --switch-at: 2px; color: var(--muted); }
+.setting:hover { color: var(--accent); }
+html[data-translation="on"] .setting[data-setting="translation"],
+html:not([data-phrase-colours="off"]) .setting[data-setting="phrase-colours"],
+html:not([data-allah-reference-colour="off"]) .setting[data-setting="allah-reference-colour"],
+html[data-known-words-colour="on"] .setting[data-setting="known-words-colour"],
+html[data-hide-word-meanings="on"] .setting[data-setting="hide-word-meanings"] {
+  --switch-track: var(--accent); --switch-at: 14px; color: var(--ink);
+}
+/* A switch another setting overrules, greyed out with its note: Hide Word
+   meanings in Flowing (#256), which applies to Study, and Phrase colours while
+   Known words colour is on (#250). */
+html[data-ayah-layout="flowing"] .setting[data-setting="hide-word-meanings"],
+html[data-known-words-colour="on"] .setting[data-setting="phrase-colours"] { opacity: .45; cursor: default; color: var(--muted); }
+.switchNote { display: none; font-size: 12px; color: var(--muted); }
+html[data-ayah-layout="flowing"] .studyNote,
+html[data-known-words-colour="on"] .knownWordsNote { display: inline; }
+
+/* Arabic size and Meaning size: a label, then − / value / + on a tinted track. */
+.stepLabel { font-size: 13.5px; }
+.stepper { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px; background: var(--tint); }
+.stepper > output { min-width: 52px; text-align: center; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) { .seg > *, .tabs, .top .destination { transition: none !important; } }

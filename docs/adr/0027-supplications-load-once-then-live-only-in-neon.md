@@ -1,0 +1,10 @@
+# Supplications load once, then live only in Neon, edited by Admins without a Scholar
+
+The Supplications come from a hand-categorised list, `data/quran_supplications_categorized.json`: one row per Ayah, with a free-text speaker and a context type. It is curated into `data/supplications/supplications.json`, which holds Supplications as runs of Ayahs, their Openings, whether each is a Supplication or Other words to Allah, and a list of Speakers named in both Languages with a "includes a Prophet" mark. A content migration loads that file once ([0015](0015-content-tables-and-recorded-content-migrations.md)). From then on Neon is the only copy and the files are frozen inputs, as for Iltifat ([0012](0012-iltifat-live-only-in-neon.md)). Admins correct the list in the Supplication editor, adding and removing Supplications as well as changing them, because the list is Saaliheen's own and known to be incomplete: Al-Fatiha, for one, is left for an Admin to add. Each save stands on its own, writes a Supplication revision in the same transaction and reaches readers at once without a Scholar, following [0023](0023-an-iltifat-save-writes-the-iltifat-and-its-revision-in-one-transaction.md). Scholars review the revisions after the fact.
+
+## Considered Options
+
+- A seed script with a wizard to reseed production, as Allah references have ([0014](0014-allah-reference-tables.md)): a reseed would overwrite Admin edits, and a content migration reaches production on the next `main` deploy with no one running anything by hand.
+- Publishing edits together as Unpublished changes, as Passages are: Supplications do not depend on one another the way a Surah's Passages do, so a save can stand on its own.
+- Keeping the Prophet mark on each Supplication: one Speaker says many Supplications (Musa says 24 of the rows), so the mark belongs to the Speaker and is set once.
+- Grouping Ayahs into Supplications by rule, consecutive Ayahs with one speaker: it joins two prayers of Musa in 28:16–17 and splits Ibrahim's prayer in 14:35–41 at 14:39, which the list leaves out, so the grouping is written by hand.
